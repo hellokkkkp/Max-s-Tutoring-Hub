@@ -12,6 +12,7 @@
       background: #101010;
       font-family: Arial, sans-serif;
       color: white;
+      cursor: none;
     }
 
     header {
@@ -40,13 +41,6 @@
     }
 
     .games {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 75vh;
-    }
-
-    .games {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,10 +50,10 @@
 
 .game-card {
   background: #202020;
-  padding: 25px;
+  padding: 20px;
   border-radius: 12px;
-  width: 220px;
-  height: 150px;
+  width: 280px;
+  height: 300px;
   text-align: center;
   box-sizing: border-box;
   display: flex;
@@ -74,54 +68,940 @@
       border: none;
       padding: 12px 25px;
       border-radius: 7px;
-      cursor: pointer;
+      cursor: none;
     }
 
-    button:hover {
-      background: #e8660c;
-    }
+   .favorite-btn {
+  background: transparent;
+  color: #FF7A1A;
+  border: none;
+  padding: 3px 6px;
+  margin-top: 5px;
+  font-size: 25px;
+  cursor: none;
+}
+
+.favorite-btn:hover {
+  color: red;
+}
+
+.game-image {
+  width: 190px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.category-btn {
+  background: #202020;
+  color: white;
+  border: 1px solid #444;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: none;
+}
+
+.category-btn.active {
+  background: #FF7A1A;
+  border-color: #FF7A1A;
+}
+.panic-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: none;
+  z-index: 9999;
+}
+
+.panic-button:hover {
+  background: #cc0000;
+}
+.recent-section {
+  padding: 20px 35px;
+}
+
+.recent-section h2 {
+  color: #FF7A1A;
+}
+
+#recent-games {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.recent-game {
+  background: #202020;
+  color: white;
+  border: 1px solid #444;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: none;
+}
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.mouse-glow {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: #FF7A1A;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 300001;
+  box-shadow: 0 0 10px #FF7A1A,
+              0 0 25px #FF7A1A,
+              0 0 40px #FF7A1A;
+  transform: translate(-50%, -50%);
+}
+#custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #FF7A1A;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 300000;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px #FF7A1A,
+              0 0 25px #FF7A1A;
+}
+body.normal-cursor {
+  cursor: auto !important;
+}
+
+body.normal-cursor button,
+body.normal-cursor a,
+body.normal-cursor input,
+body.normal-cursor #settings-menu label {
+  cursor: pointer !important;
+}
+#live-clock {
+  color: #FF7A1A;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px;
+  text-shadow: 0 0 10px #FF7A1A;
+}
+#weather-box {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  z-index: 999;
+  background: #181818;
+  border: 1px solid #FF7A1A;
+  border-radius: 12px;
+  padding: 12px;
+  width: 220px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 122, 26, 0.3);
+}
+#settings-menu {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 10000;
+  background: #181818;
+  border: 1px solid #FF7A1A;
+  border-radius: 12px;
+  padding: 20px;
+  width: 220px;
+  box-shadow: 0 0 20px rgba(255, 122, 26, 0.3);
+}
+#admin-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200000;
+  background: #181818;
+  border: 2px solid #FF7A1A;
+  border-radius: 15px;
+  padding: 25px;
+  width: 300px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 30px #FF7A1A;
+}
+
+#admin-panel h2 {
+  color: #FF7A1A;
+}
+
+#admin-panel button {
+  background: #FF7A1A;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: none;
+}
+#settings-menu h2 {
+  color: #FF7A1A;
+  margin-top: 0;
+}
+
+#settings-menu label {
+  cursor: none;
+}
+
+#settings-menu input {
+  accent-color: #FF7A1A;
+  cursor: none;
+}
+#weather-box h3 {
+  color: #FF7A1A;
+  margin-top: 0;
+}
+
+#weather-box p {
+  margin: 8px;
+  font-size: 16px;
+}
+
+#weather-box small {
+  color: #999;
+}
+.game-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 20px #FF7A1A,
+              0 0 40px rgba(255, 122, 26, 0.35);
+}
+/* MOBILE LAYOUT */
+@media (max-width: 700px) {
+
+  header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 10px;
+  }
+
+  header h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .categories {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .category-btn {
+    padding: 10px 14px;
+  }
+
+  #search {
+    width: 80%;
+    box-sizing: border-box;
+  }
+
+  #live-clock {
+    font-size: 17px;
+  }
+
+  .games {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+  }
+
+  .game-card {
+    width: 90%;
+    max-width: 320px;
+  }
+
+  #weather-box {
+    width: 160px;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .panic-button {
+    bottom: 10px;
+    right: 10px;
+    padding: 12px 16px;
+  }
+
+}
   </style>
 </head>
 
 <body>
+ <canvas id="particles"></canvas>   
+ <div id="admin-panel" style="display: none;">
+  <h2>🔐 Admin Panel</h2>
+  <button onclick="closeAdminPanel()">✖ Close</button>
+
+  <h3>Welcome, Admin!</h3>
+  <h3>➕ Add a New Game</h3>
+
+<input type="text" id="new-game-name" placeholder="Game Name">
+
+<br><br>
+
+<input type="text" id="new-game-url" placeholder="Game URL">
+
+<br><br>
+
+<input type="text" id="new-game-image" placeholder="Image URL">
+
+<br><br>
+
+<button onclick="addNewGame()">Add Game</button>
+<br><br>
+
+<h3>🗑️ Delete Games</h3>
+<div id="admin-game-list"></div>
+</div>
+ <div id="custom-cursor"></div>
 
   <header>
+    <nav class="categories">
+  <button class="category-btn active" data-category="all">
+    All Games
+  </button>
+
+  <button class="category-btn" data-category="favorites">
+    ♥ Favorites
+  </button>
+
+  <button class="category-btn" data-category="suggestions">
+  Suggestions
+</button>
+</nav>
     <h1>Max's Tutoring Hub</h1>
     <input id="search" type="text" placeholder="Search games...">
+    <div id="live-clock">Loading time...</div>
   </header>
+  <div id="weather-box">
+  <h3>🌤️ Pawtucket Weather</h3>
+  <p id="weather-temp">Loading temperature...</p>
+  <p id="weather-condition">Loading conditions...</p>
+  <p id="weather-wind">Loading wind speed...</p>
+  <small>Weather by Open-Meteo</small>
+</div>
+  <button onclick="toggleMusic()" id="music-button">
+  🎵 Music ON / OFF
+</button>
+<div id="settings-menu" style="display: none;">
+  <h2>⚙️ Settings</h2>
 
+  <label>
+    <input type="checkbox" id="particles-toggle" checked>
+    Floating Particles
+  </label>
+
+  <br><br>
+
+  <label>
+    <input type="checkbox" id="trail-toggle" checked>
+    Mouse Trail
+  </label>
+
+  <br><br>
+
+  <label>
+    <input type="checkbox" id="music-toggle">
+    Background Music
+  </label>
+
+  <br><br>
+
+  <label>
+    <input type="checkbox" id="sound-toggle" checked>
+    Button Sounds
+  </label>
+  <br><br>
+<label for="volume-slider">🔊 Volume</label>
+<input type="range" id="volume-slider" min="0" max="100" value="50">
+  <br><br>
+<label>
+  <input type="checkbox" id="cursor-toggle" checked>
+  Custom Cursor
+</label>
+</div>
+<button onclick="toggleSettings()" id="settings-button">
+  ⚙️ Settings
+</button>
+<button onclick="openAdminPanel()" id="admin-button">🔐 Admin</button>
+<button onclick="randomGame()" id="random-button">
+    🎲 Random Game
+</button>
+  <section id="suggestions-section" style="display: none; text-align: center; padding: 40px;">
+  <h2>Suggestions</h2>
+  <p>Have an idea for a game? Let us know!</p>
+
+  <button onclick="window.open('https://discord.gg/qU29PWMQg', '_blank')">
+    💡 Suggestions
+  </button>
+</section>
+<section class="recent-section" id="recent-section">
+  <h2>Recently Played</h2>
+  <div id="recent-games">
+    <p>No games played yet!</p>
+  </div>
+</section>
   <section class="games">
     <div class="game-card">
+        <img src="images/happywheels.webp" class="game-image" alt="Happy Wheels">
       <h2>Happy Wheels</h2>
 
-      <button onclick="window.open('https://noahs.academy/games/139.html', '_blank', 'noopener,noreferrer')">
+      <button onclick="playGame('Happy Wheels', 'https://noahs.academy/games/139.html')">
         PLAY
       </button>
+      <button class="favorite-btn">♡</button>
         </div>
 
     <div class="game-card">
+        <img src="images/plantsvszombies.webp" class="game-image" alt="Plants vs. Zombies">
       <h2>Plants Vs Zombies</h2>
 
-      <button onclick="window.open('https://noahs.academy/games/467.html', '_blank', 'noopener,noreferrer')">
+      <button onclick="playGame('Plants vs. Zombies', 'https://noahs.academy/games/467.html')">
         PLAY
       </button>
+      <button class="favorite-btn">♡</button>
     </div>
   </section>
 
   <script>
-    const search = document.getElementById("search");
-    const gameCard = document.querySelector(".game-card");
+   
+const search = document.getElementById("search");
+function toggleSettings() {
+  const menu = document.getElementById("settings-menu");
 
-    search.addEventListener("input", function() {
-      const gameName = gameCard.querySelector("h2").textContent;
+  if (menu.style.display === "none") {
+    menu.style.display = "block";
+  } else {
+    menu.style.display = "none";
+  }
+}
+function openAdminPanel() {
+  const password = prompt("Enter Admin Password:");
 
-      if (gameName.toLowerCase().includes(search.value.toLowerCase())) {
-        gameCard.style.display = "block";
-      } else {
-        gameCard.style.display = "none";
-      }
+  if (password === "stop123456!") {
+    document.getElementById("admin-panel").style.display = "block";
+    showAdminGames();
+  } else if (password !== null) {
+    alert("Incorrect password!");
+  }
+}
+
+function closeAdminPanel() {
+  document.getElementById("admin-panel").style.display = "none";
+}
+function addNewGame() {
+  const name = document.getElementById("new-game-name").value;
+  const url = document.getElementById("new-game-url").value;
+  const image = document.getElementById("new-game-image").value;
+
+  if (!name || !url || !image) {
+    alert("Please fill in all fields!");
+    return;
+  }
+
+  const card = document.createElement("div");
+  card.className = "game-card";
+
+  card.innerHTML = `
+    <img src="${image}" class="game-image" alt="${name}">
+    <h2>${name}</h2>
+    <button>PLAY</button>
+    <button class="favorite-btn">♡</button>
+  `;
+
+  card.querySelector("button").onclick = function() {
+    playGame(name, url);
+  };
+
+  document.querySelector(".games").appendChild(card);
+const savedGames = JSON.parse(localStorage.getItem("savedGames")) || [];
+
+savedGames.push({
+  name: name,
+  url: url,
+  image: image
+});
+
+localStorage.setItem("savedGames", JSON.stringify(savedGames));
+  document.getElementById("new-game-name").value = "";
+  document.getElementById("new-game-url").value = "";
+  document.getElementById("new-game-image").value = "";
+
+  alert(name + " was added!");
+}
+function showAdminGames() {
+  const list = document.getElementById("admin-game-list");
+  list.innerHTML = "";
+
+  const savedGames = JSON.parse(localStorage.getItem("savedGames")) || [];
+
+  savedGames.forEach((game, index) => {
+    const item = document.createElement("div");
+
+    item.innerHTML = `
+      <p>${game.name}
+      <button onclick="deleteGame(${index})">🗑️ Delete</button>
+      </p>
+    `;
+
+    list.appendChild(item);
+  });
+}
+
+function deleteGame(index) {
+  const savedGames = JSON.parse(localStorage.getItem("savedGames")) || [];
+
+  const gameName = savedGames[index].name;
+
+  savedGames.splice(index, 1);
+  localStorage.setItem("savedGames", JSON.stringify(savedGames));
+
+  favorites = favorites.filter(name => name !== gameName);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+
+  let recentGames = JSON.parse(localStorage.getItem("recentGames")) || [];
+  recentGames = recentGames.filter(game => game.name !== gameName);
+  localStorage.setItem("recentGames", JSON.stringify(recentGames));
+
+  document.querySelectorAll(".game-card").forEach(card => {
+    if (card.querySelector("h2").textContent === gameName) {
+      card.remove();
+    }
+  });
+
+  showRecentGames();
+  showAdminGames();
+  updateGames();
+}
+function randomGame() {
+  const games = [
+    {
+      name: "Happy Wheels",
+      url: "https://noahs.academy/games/139.html"
+    },
+    {
+      name: "Plants vs. Zombies",
+      url: "https://noahs.academy/games/467.html"
+    }
+  ];
+
+  const random = Math.floor(Math.random() * games.length);
+  playGame(games[random].name, games[random].url);
+}
+const savedGames = JSON.parse(localStorage.getItem("savedGames")) || [];
+
+savedGames.forEach(game => {
+  const card = document.createElement("div");
+  card.className = "game-card";
+
+  card.innerHTML = `
+    <img src="${game.image}" class="game-image" alt="${game.name}">
+    <h2>${game.name}</h2>
+    <button>PLAY</button>
+    <button class="favorite-btn">♡</button>
+  `;
+
+  card.querySelector("button").onclick = function() {
+    playGame(game.name, game.url);
+  };
+
+  document.querySelector(".games").appendChild(card);
+});
+const gameCards = document.querySelectorAll(".game-card");
+const categoryButtons = document.querySelectorAll(".category-btn");
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let currentCategory = "all";
+
+function updateGames() {
+  const recentSection = document.getElementById("recent-section");
+  const suggestionsSection = document.getElementById("suggestions-section");
+  const gamesSection = document.querySelector(".games");
+
+  suggestionsSection.style.display =
+    currentCategory === "suggestions" ? "block" : "none";
+
+  recentSection.style.display =
+    currentCategory === "all" ? "block" : "none";
+
+  gamesSection.style.display =
+    currentCategory === "suggestions" ? "none" : "flex";
+
+  gameCards.forEach(card => {
+    const gameName = card.querySelector("h2").textContent;
+    const matchesSearch = gameName.toLowerCase().includes(search.value.toLowerCase());
+    const isFavorite = favorites.includes(gameName);
+
+    const matchesCategory =
+      currentCategory === "all" ||
+      (currentCategory === "favorites" && isFavorite);
+
+    card.style.display =
+      matchesSearch && matchesCategory ? "flex" : "none";
+  });
+}
+
+// Search
+search.addEventListener("input", updateGames);
+
+// Categories
+categoryButtons.forEach(button => {
+  button.addEventListener("click", function() {
+    currentCategory = button.dataset.category;
+
+    categoryButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    updateGames();
+  });
+});
+
+// Favorites
+document.querySelectorAll(".favorite-btn").forEach(button => {
+  const gameName = button.parentElement.querySelector("h2").textContent;
+
+  function updateHeart() {
+    button.textContent = favorites.includes(gameName) ? "♥" : "♡";
+  }
+
+  updateHeart();
+
+  button.addEventListener("click", function() {
+    if (favorites.includes(gameName)) {
+      favorites = favorites.filter(name => name !== gameName);
+    } else {
+      favorites.push(gameName);
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    updateHeart();
+    updateGames();
+  });
+});
+
+// Recently Played
+function playGame(name, url) {
+  let recentGames = JSON.parse(localStorage.getItem("recentGames")) || [];
+
+  recentGames = recentGames.filter(game => game.name !== name);
+  recentGames.unshift({ name: name, url: url });
+  recentGames = recentGames.slice(0, 5);
+
+  localStorage.setItem("recentGames", JSON.stringify(recentGames));
+
+  showRecentGames();
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function showRecentGames() {
+  const recentContainer = document.getElementById("recent-games");
+  let recentGames = JSON.parse(localStorage.getItem("recentGames")) || [];
+
+  recentContainer.innerHTML = "";
+
+  if (recentGames.length === 0) {
+    recentContainer.innerHTML = "<p>No games played yet!</p>";
+    return;
+  }
+
+  recentGames.forEach(game => {
+    const button = document.createElement("button");
+    button.className = "recent-game";
+    button.textContent = "▶ " + game.name;
+
+    button.addEventListener("click", function() {
+      playGame(game.name, game.url);
     });
-  </script>
 
+    recentContainer.appendChild(button);
+  });
+}
+
+// Button sounds
+let buttonAudio;
+
+function playButtonSound() {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) return;
+
+  if (!buttonAudio) {
+    buttonAudio = new AudioContext();
+  }
+
+  if (buttonAudio.state === "suspended") {
+    buttonAudio.resume();
+  }
+
+  const oscillator = buttonAudio.createOscillator();
+  const volume = buttonAudio.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(650, buttonAudio.currentTime);
+  oscillator.frequency.exponentialRampToValueAtTime(
+    400, buttonAudio.currentTime + 0.1
+  );
+
+  volume.gain.setValueAtTime(0.12, buttonAudio.currentTime);
+  volume.gain.exponentialRampToValueAtTime(
+    0.001, buttonAudio.currentTime + 0.1
+  );
+
+  oscillator.connect(volume);
+  volume.connect(buttonAudio.destination);
+
+  oscillator.start();
+  oscillator.stop(buttonAudio.currentTime + 0.1);
+}
+
+let soundEnabled = true;
+document.addEventListener("click", function(event) {
+  if (soundEnabled && event.target.closest("button")) {
+    playButtonSound();
+  }
+});
+
+showRecentGames();
+updateGames();
+const nukeAlarm = new Audio("images/nuke-alarm.mp3");
+
+function playNukeSound() {
+  nukeAlarm.currentTime = 0;
+  nukeAlarm.play();
+}
+
+function stopNukeSound() {
+  nukeAlarm.pause();
+  nukeAlarm.currentTime = 0;
+}
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+for (let i = 0; i < 70; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 3 + 1,
+    speed: Math.random() * 0.7 + 0.2,
+    opacity: Math.random()
+  });
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.y -= p.speed;
+
+    if (p.y < 0) {
+      p.y = canvas.height;
+      p.x = Math.random() * canvas.width;
+    }
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 122, 26, ${p.opacity})`;
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = "#FF7A1A";
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
+const trail = [];
+
+for (let i = 0; i < 12; i++) {
+  const dot = document.createElement("div");
+  dot.className = "mouse-glow";
+  dot.style.opacity = 1 - i / 12;
+  dot.style.width = (12 - i * 0.7) + "px";
+  dot.style.height = (12 - i * 0.7) + "px";
+  document.body.appendChild(dot);
+  trail.push({ element: dot, x: 0, y: 0 });
+}
+const customCursor = document.getElementById("custom-cursor");
+const cursorToggle = document.getElementById("cursor-toggle");
+
+cursorToggle.addEventListener("change", function() {
+  if (this.checked) {
+    customCursor.style.display = "block";
+    document.body.classList.remove("normal-cursor");
+  } else {
+    customCursor.style.display = "none";
+    document.body.classList.add("normal-cursor");
+  }
+});
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener("mousemove", function(event) {
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+
+  customCursor.style.left = event.clientX + "px";
+  customCursor.style.top = event.clientY + "px";
+});
+
+function animateTrail() {
+  let x = mouseX;
+  let y = mouseY;
+
+  trail.forEach(dot => {
+    dot.x += (x - dot.x) * 0.35;
+    dot.y += (y - dot.y) * 0.35;
+
+    dot.element.style.left = dot.x + "px";
+    dot.element.style.top = dot.y + "px";
+
+    x = dot.x;
+    y = dot.y;
+  });
+
+  requestAnimationFrame(animateTrail);
+}
+
+animateTrail();
+const backgroundMusic = new Audio("images/background-music.mp3");
+const volumeSlider = document.getElementById("volume-slider");
+
+volumeSlider.addEventListener("input", function() {
+  backgroundMusic.volume = this.value / 100;
+});
+
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.8;
+
+function toggleMusic() {
+  if (backgroundMusic.paused) {
+    backgroundMusic.play();
+    document.getElementById("music-toggle").checked = true;
+  } else {
+    backgroundMusic.pause();
+    document.getElementById("music-toggle").checked = false;
+  }
+}
+function updateClock() {
+  const clock = document.getElementById("live-clock");
+
+  const now = new Date();
+
+  clock.textContent = now.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+async function getWeather() {
+  const url = "https://api.open-meteo.com/v1/forecast?latitude=41.8787&longitude=-71.3826&current=temperature_2m,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph";
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+  throw new Error("Weather request failed");
+}
+    const data = await response.json();
+
+    const weather = data.current;
+    const code = weather.weather_code;
+
+    let condition = "Unknown";
+
+    if (code === 0) condition = "☀️ Clear sky";
+    else if (code <= 3) condition = "⛅ Partly cloudy";
+    else if (code <= 48) condition = "🌫️ Foggy";
+    else if (code <= 67) condition = "🌧️ Rainy";
+    else if (code <= 77) condition = "❄️ Snowy";
+    else if (code <= 82) condition = "🌦️ Rain showers";
+    else if (code <= 86) condition = "🌨️ Snow showers";
+    else if (code >= 95) condition = "⛈️ Thunderstorm";
+
+    document.getElementById("weather-temp").textContent =
+      "🌡️ " + weather.temperature_2m + "°F";
+
+    document.getElementById("weather-condition").textContent = condition;
+
+    document.getElementById("weather-wind").textContent =
+      "💨 Wind: " + weather.wind_speed_10m + " mph";
+
+  } catch (error) {
+    document.getElementById("weather-temp").textContent =
+      "Weather unavailable";
+  }
+}
+// Settings switches
+
+document.getElementById("particles-toggle").addEventListener("change", function() {
+  canvas.style.display = this.checked ? "block" : "none";
+});
+
+document.getElementById("trail-toggle").addEventListener("change", function() {
+  trail.forEach(dot => {
+    dot.element.style.display = this.checked ? "block" : "none";
+  });
+});
+
+document.getElementById("music-toggle").addEventListener("change", function() {
+  if (this.checked) {
+    backgroundMusic.play();
+  } else {
+    backgroundMusic.pause();
+  }
+});
+
+document.getElementById("sound-toggle").addEventListener("change", function() {
+  soundEnabled = this.checked;
+});
+getWeather();
+setInterval(getWeather, 600000);
+  </script>
+<button class="panic-button"
+  onmouseenter="playNukeSound()"
+  onmouseleave="stopNukeSound()"
+  
+  onclick="window.location.href='https://classroom.google.com/'">
+  PANIC
+  
+</button>
 </body>
 </html>
