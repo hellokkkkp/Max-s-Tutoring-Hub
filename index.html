@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max's Tutoring Hub</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #101010;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 35px;
+      background: #181818;
+      border-bottom: 1px solid #292929;
+    }
+
+    h1 {
+      color: #FF7A1A;
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+
+    #search {
+      background: #252525;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: white;
+      width: 220px;
+    }
+
+    .games {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 75vh;
+    }
+
+    .games {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  min-height: 75vh;
+}
+
+.game-card {
+  background: #202020;
+  padding: 25px;
+  border-radius: 12px;
+  width: 220px;
+  height: 150px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+    button {
+      background: #FF7A1A;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e8660c;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Max's Tutoring Hub</h1>
+    <input id="search" type="text" placeholder="Search games...">
+  </header>
+
+  <section class="games">
+    <div class="game-card">
+      <h2>Happy Wheels</h2>
+
+      <button onclick="window.open('https://noahs.academy/games/139.html', '_blank', 'noopener,noreferrer')">
+        PLAY
+      </button>
+        </div>
+
+    <div class="game-card">
+      <h2>Plants Vs Zombies</h2>
+
+      <button onclick="window.open('https://noahs.academy/games/467.html', '_blank', 'noopener,noreferrer')">
+        PLAY
+      </button>
+    </div>
+  </section>
+
+  <script>
+    const search = document.getElementById("search");
+    const gameCard = document.querySelector(".game-card");
+
+    search.addEventListener("input", function() {
+      const gameName = gameCard.querySelector("h2").textContent;
+
+      if (gameName.toLowerCase().includes(search.value.toLowerCase())) {
+        gameCard.style.display = "block";
+      } else {
+        gameCard.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
