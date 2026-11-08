@@ -112,31 +112,37 @@ button {
 }
 
 .category-btn.active {
-  background: #FF7A1A;
-  border-color: #FF7A1A;
+    background: #202020;
+    border-color: #444;
+    color: white;
+    box-shadow: none;
 }
 
 .games {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  min-height: 75vh;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    min-height: 75vh;
+    align-content: start;
+    justify-content: start;
+    align-items: start;
 }
 
 .game-card {
-  background: #202020;
-  padding: 20px;
-  border-radius: 12px;
-  width: 280px;
-  height: 300px;
-  text-align: center;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: #202020;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    min-width: 0;
+    height: 300px;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .game-card:hover {
@@ -355,15 +361,13 @@ body.normal-cursor #settings-menu label {
 }
 
 #game-count {
-  display: block;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  color: #FF7A1A;
-  margin: -70px auto;
-  text-shadow: 0 0 10px #FF7A1A;
-  position: relative;
-  top: 110px;
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FF7A1A;
+    margin: 20px auto;
+    text-shadow: 0 0 10px #FF7A1A;
 }
 
 @media (max-width: 900px) {
@@ -416,9 +420,10 @@ body.normal-cursor #settings-menu label {
   }
 
   .game-card {
-    width: 90%;
-    max-width: 320px;
-  }
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
 
   #weather-box {
     width: 160px;
@@ -512,6 +517,191 @@ body.normal-cursor #settings-menu label {
   color: white;
   border-radius: 8px;
 }
+.game-card .game-image {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.game-card .game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+}
+.game-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Smaller screens */
+@media (max-width: 900px) {
+    .games {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .games {
+        grid-template-columns: 1fr;
+    }
+}
+/* EXPANDABLE SIDEBAR */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 68px;
+    height: 100vh;
+    background: #181818;
+    border-right: 2px solid #FF7A1A;
+    z-index: 100000;
+    overflow: hidden;
+    transition: width 0.35s ease;
+    box-shadow: 0 0 15px rgba(255, 122, 26, 0.15);
+}
+
+#sidebar:hover {
+    width: 260px;
+}
+
+.sidebar-content {
+    width: 260px;
+    padding: 25px 10px;
+    box-sizing: border-box;
+}
+
+.sidebar-categories,
+.sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-actions {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+#sidebar button {
+    width: 240px;
+    min-height: 45px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+#sidebar:not(:hover) button {
+    width: 48px;
+    font-size: 0;
+    padding: 12px 0;
+    text-align: center;
+}
+
+#sidebar:not(:hover) .category-btn:nth-child(1)::before { content: "🏠"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn:nth-child(2)::before { content: "🎮"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn:nth-child(3)::before { content: "♥"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn:nth-child(4)::before { content: "💡"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn:nth-child(5)::before { content: "👤"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn:nth-child(6)::before { content: "🤖"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn:nth-child(7)::before { content: "🌐"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn:nth-child(8)::before { content: "💬"; font-size: 20px; }
+
+#sidebar:not(:hover) .sidebar-actions button:nth-child(1)::before { content: "🎵"; font-size: 20px; }
+#sidebar:not(:hover) .sidebar-actions button:nth-child(2)::before { content: "⚙️"; font-size: 20px; }
+#sidebar:not(:hover) .sidebar-actions button:nth-child(3)::before { content: "🔐"; font-size: 20px; }
+#sidebar:not(:hover) .sidebar-actions button:nth-child(4)::before { content: "🎲"; font-size: 20px; }
+
+/* KEEP CLOCK IN TOP RIGHT */
+#live-clock {
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    z-index: 100001;
+    margin: 0;
+}
+/* SIDEBAR ACTION BUTTON COLORS */
+#sidebar .sidebar-actions button {
+    background: #202020;
+    color: white;
+    border: 1px solid #444;
+    box-shadow: none;
+}
+
+/* ORANGE GLOW ON HOVER */
+#sidebar .sidebar-actions button:hover {
+    background: #202020;
+    color: #FF7A1A;
+    border-color: #FF7A1A;
+    box-shadow:
+        0 0 8px #FF7A1A,
+        0 0 18px #FF7A1A,
+        0 0 30px rgba(255, 122, 26, 0.5);
+}
+/* HOME SHORTCUT CARDS */
+.home-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(110px, 1fr));
+    gap: 15px;
+    max-width: 900px;
+    margin: 45px auto 20px;
+    padding: 0 20px;
+}
+
+.home-shortcut {
+    height: 125px;
+    background: linear-gradient(145deg, #252525, #101010);
+    border: 1px solid #3a3a3a;
+    border-radius: 16px;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.home-shortcut span {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #202020;
+    border: 1px solid #333;
+    border-radius: 12px;
+    font-size: 21px;
+}
+
+.home-shortcut p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.home-shortcut:hover {
+    transform: translateY(-5px);
+    border-color: #FF7A1A;
+    color: white;
+    box-shadow: 0 0 18px rgba(255, 122, 26, 0.35);
+}
+
+@media (max-width: 600px) {
+    .home-shortcuts {
+        grid-template-columns: repeat(2, minmax(110px, 1fr));
+    }
+}
 </style>
 </head>
 
@@ -532,25 +722,30 @@ body.normal-cursor #settings-menu label {
     <input id="search" type="text" placeholder="Search games...">
     <div id="live-clock">Loading time...</div>
 
-    <div class="header-actions">
+</header>
+<aside id="sidebar">
+  <div class="sidebar-content">
+
+    <div class="sidebar-categories">
+      <button class="category-btn active" data-category="home">🏠 Home</button>
+      <button class="category-btn" data-category="all">🎮 All Games</button>
+      <button class="category-btn" data-category="favorites">♥ Favorites</button>
+      <button class="category-btn" data-category="suggestions">💡 Suggestions</button>
+      <button class="category-btn" data-category="profile">👤 Profile</button>
+      <button class="category-btn" data-category="ai">🤖 AI Bot</button>
+      <button class="category-btn" data-category="web">🌐 Web</button>
+      <button class="category-btn" data-category="chat">💬 Global Chat</button>
+    </div>
+
+    <div class="sidebar-actions">
       <button onclick="toggleMusic()" id="music-button">🎵 Music ON / OFF</button>
       <button onclick="toggleSettings()" id="settings-button">⚙️ Settings</button>
       <button onclick="openAdminPanel()" id="admin-button">🔐 Admin</button>
       <button onclick="randomGame()" id="random-button">🎲 Random Game</button>
     </div>
-  </div>
 
-  <nav class="categories">
-    <button class="category-btn active" data-category="home">Home 🏠</button>
-    <button class="category-btn" data-category="all">All Games</button>
-    <button class="category-btn" data-category="favorites">♥ Favorites</button>
-    <button class="category-btn" data-category="suggestions">Suggestions</button>
-    <button class="category-btn" data-category="profile">Profile</button>
-    <button class="category-btn" data-category="ai">AI Bot 🤖</button>
-    <button class="category-btn" data-category="web">Web</button>
-    <button class="category-btn" data-category="chat">💬 Global Chat</button>
-  </nav>
-</header>
+  </div>
+</aside>
 
 <section id="home-section" style="display:none; text-align:center; padding:60px 20px;">
 
@@ -562,6 +757,50 @@ body.normal-cursor #settings-menu label {
   <span class="online-dot"></span>
   <span id="online-count">Connecting...</span>
   <span>online now</span>
+</div>
+
+<div class="home-shortcuts">
+
+  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=home]').click()">
+    <span>🏠</span>
+    <p>Home</p>
+  </button>
+
+  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=all]').click()">
+    <span>🎮</span>
+    <p>All Games</p>
+  </button>
+
+  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=favorites]').click()">
+    <span>♥</span>
+    <p>Favorites</p>
+  </button>
+
+  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=suggestions]').click()">
+    <span>💡</span>
+    <p>Suggestions</p>
+  </button>
+
+  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=profile]').click()">
+    <span>👤</span>
+    <p>Profile</p>
+  </button>
+
+  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=ai]').click()">
+    <span>🤖</span>
+    <p>AI</p>
+  </button>
+
+  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=web]').click()">
+    <span>🌐</span>
+    <p>Browser</p>
+  </button>
+
+  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=chat]').click()">
+    <span>💬</span>
+    <p>Global Chat</p>
+  </button>
+
 </div>
 
 </section>
@@ -685,6 +924,82 @@ body.normal-cursor #settings-menu label {
     <button onclick="playGame('Plants vs. Zombies','https://noahs.academy/games/467.html')">PLAY</button>
     <button class="favorite-btn">♡</button>
   </div>
+</div>
+<div class="game-card">
+
+    <div class="game-image">
+        <img src="images/peak.webp" alt="PEAK">
+    </div>
+
+    <h2>PEAK</h2>
+
+    <button onclick="playGame('PEAK','https://noahs.academy/games/471.html?cdn=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fwasmdotrip%2FPeak-Port%40main')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <div class="game-image">
+    <img src="images/cluster-trucks.webp" alt="Cluster Trucks">
+</div>
+
+    <h2>Cluster Trucks</h2>
+
+    <button onclick="playGame('Cluster Trucks','https://noahs.academy/games/473.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <div class="game-image">
+        <img src="images/la-madriguera.webp" alt="La Madriguera">
+    </div>
+
+    <h2>La Madriguera</h2>
+
+    <button onclick="playGame('La Madriguera','https://noahs.academy/games/468.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <div class="game-image">
+        <img src="images/gta-3.jpg" alt="GTA 3">
+    </div>
+
+    <h2>GTA 3</h2>
+
+    <button onclick="playGame('GTA 3','https://noahs.academy/games/475.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <div class="game-image">
+        <img src="images/half-life.webp" alt="Half-Life">
+    </div>
+
+    <h2>Half-Life</h2>
+
+    <button onclick="playGame('Half-Life','https://noahs.academy/games/190.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
 </section>
 <script>
 
@@ -823,9 +1138,29 @@ function randomGame() {
       url: "https://noahs.academy/games/467.html"
     },
     {
-      name: "Please Don't Touch Anything",
-      url: "https://noahs.academy/games/155.html"
-    }
+    name: "Please Don't Touch Anything",
+    url: "https://noahs.academy/games/155.html"
+},
+{
+    name: "Muddy Heights",
+    url: "https://noahs.academy/games/509.html"
+},
+{
+    name: "PEAK",
+    url: "https://noahs.academy/games/471.html?cdn=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fwasmdotrip%2FPeak-Port%40main"
+},
+{
+    name: "Cluster Trucks",
+    url: "https://noahs.academy/games/473.html"
+},
+{
+    name: "GTA 3",
+    url: "https://noahs.academy/games/475.html"
+},
+{
+    name: "Half-Life",
+    url: "https://noahs.academy/games/190.html"
+},
   ];
 
   const random = Math.floor(Math.random() * games.length);
@@ -836,8 +1171,14 @@ function randomGame() {
 const savedGames = JSON.parse(localStorage.getItem("savedGames")) || [];
 
 savedGames.forEach(game => {
-  const card = document.createElement("div");
-  card.className = "game-card";
+
+    const alreadyExists = [...document.querySelectorAll(".game-card h2")]
+        .some(title => title.textContent.trim().toLowerCase() === game.name.trim().toLowerCase());
+
+    if (alreadyExists) return;
+
+    const card = document.createElement("div");
+    card.className = "game-card";
 
   card.innerHTML = `
     <img src="${game.image}" class="game-image" alt="${game.name}">
@@ -898,8 +1239,8 @@ function updateGames() {
 
   gamesSection.style.display =
     ["home", "suggestions", "profile", "web", "ai", "chat"].includes(currentCategory)
-      ? "none"
-      : "flex";
+        ? "none"
+        : "grid";
 
   getGameCards().forEach(card => {
     const gameName = card.querySelector("h2").textContent;
@@ -1024,13 +1365,6 @@ function showRecentGames() {
     recentContainer.appendChild(button);
   });
 }
-
-document.querySelectorAll(".favorite-btn").forEach(button => {
-  if (!button.dataset.initialized) {
-    button.dataset.initialized = "true";
-    setupFavoriteButton(button);
-  }
-});
 
 // Button sounds
 let buttonAudio;
@@ -1432,6 +1766,7 @@ if (gameCount) {
   onclick="window.location.href='https://classroom.google.com/'">
   PANIC
 </button>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
@@ -1439,6 +1774,7 @@ import {
   getDatabase,
   ref,
   set,
+  get,
   onValue,
   onDisconnect,
   push,
@@ -1467,106 +1803,122 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
 
+// ONLINE PLAYER COUNTER
 const onlineCount = document.getElementById("online-count");
 const onlineRef = ref(database, "online");
 const connectedRef = ref(database, ".info/connected");
 
-// Listen for online players immediately
 onValue(onlineRef, snapshot => {
-  const count = snapshot.size;
-
-  console.log("Players online:", count);
-
   if (onlineCount) {
-    onlineCount.textContent = count;
+    onlineCount.textContent = snapshot.size;
   }
 }, error => {
-  console.error("Count error:", error);
-
-  if (onlineCount) {
-    onlineCount.textContent = "Error";
-  }
+  console.error("Online count error:", error);
+  if (onlineCount) onlineCount.textContent = "Error";
 });
 
-// Sign in and register this visitor
+// SIGN IN AND LOAD USERNAME
 try {
   const result = await signInAnonymously(auth);
   const user = result.user;
 
-  // GLOBAL CHAT MESSAGE LISTENER
-const chatRef = ref(database, "chat");
-const chatMessages = document.getElementById("chat-messages");
-
-const chatQuery = query(
-  chatRef,
-  orderByChild("timestamp"),
-  limitToLast(50)
-);
-
-onValue(chatQuery, snapshot => {
-  chatMessages.innerHTML = "";
-
-  snapshot.forEach(childSnapshot => {
-    const data = childSnapshot.val();
-
-    const messageDiv = document.createElement("div");
-    messageDiv.style.marginBottom = "15px";
-
-    const username = document.createElement("strong");
-    username.style.color = "#FF7A1A";
-    username.textContent = data.username + ": ";
-
-    const messageText = document.createElement("span");
-    messageText.textContent = data.message;
-
-    const time = document.createElement("small");
-    time.style.color = "#888";
-    time.style.marginLeft = "8px";
-
-    if (data.timestamp) {
-      time.textContent = new Date(data.timestamp).toLocaleTimeString();
-    }
-
-    messageDiv.append(username, messageText, time);
-    chatMessages.appendChild(messageDiv);
-  });
-
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-});
-
-// SEND CHAT MESSAGE
-window.sendChatMessage = async function() {
   const usernameInput = document.getElementById("chat-username");
   const messageInput = document.getElementById("chat-message");
+  const chatMessages = document.getElementById("chat-messages");
 
-  const username = usernameInput.value.trim();
-  const message = messageInput.value.trim();
+  const usernameRef = ref(database, "usernames/" + user.uid);
+  const chatRef = ref(database, "chat");
 
-  if (!username || !message) {
-    alert("Enter a username and message!");
-    return;
+  let chatUsernameLocked = false;
+
+  const usernameSnapshot = await get(usernameRef);
+
+  if (usernameSnapshot.exists()) {
+    usernameInput.value = usernameSnapshot.val();
+    usernameInput.disabled = true;
+    usernameInput.placeholder = "Username locked!";
+    chatUsernameLocked = true;
   }
 
-  if (username.length > 20 || message.length > 300) {
-    alert("Your username or message is too long!");
-    return;
-  }
+  // LOAD CHAT MESSAGES
+  const chatQuery = query(
+    chatRef,
+    orderByChild("timestamp"),
+    limitToLast(50)
+  );
 
-  try {
-    await push(chatRef, {
-  uid: user.uid,
-  username: username,
-  message: message,
-  timestamp: serverTimestamp()
-});
+  onValue(chatQuery, snapshot => {
+    chatMessages.innerHTML = "";
 
-    messageInput.value = "";
-  } catch (error) {
-    console.error("Chat error:", error);
-    alert("Message could not be sent. Please try again.");
-  }
-};
+    snapshot.forEach(childSnapshot => {
+      const data = childSnapshot.val();
 
+      const messageDiv = document.createElement("div");
+      messageDiv.style.marginBottom = "15px";
+
+      const username = document.createElement("strong");
+      username.style.color = "#FF7A1A";
+      username.textContent = data.username + ": ";
+
+      const messageText = document.createElement("span");
+      messageText.textContent = data.message;
+
+      const time = document.createElement("small");
+      time.style.color = "#888";
+      time.style.marginLeft = "8px";
+
+      if (data.timestamp) {
+        time.textContent = new Date(data.timestamp).toLocaleTimeString();
+      }
+
+      messageDiv.append(username, messageText, time);
+      chatMessages.appendChild(messageDiv);
+    });
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  });
+
+  // SEND CHAT MESSAGE
+  window.sendChatMessage = async function() {
+    const username = usernameInput.value.trim();
+    const message = messageInput.value.trim();
+
+    if (!username || !message) {
+      alert("Enter a username and message!");
+      return;
+    }
+
+    if (username.length > 20 || message.length > 300) {
+      alert("Your username or message is too long!");
+      return;
+    }
+
+    try {
+      // REGISTER USERNAME ONLY ONCE
+      if (!chatUsernameLocked) {
+        await set(usernameRef, username);
+
+        chatUsernameLocked = true;
+        usernameInput.disabled = true;
+        usernameInput.placeholder = "Username locked!";
+      }
+
+      await push(chatRef, {
+        uid: user.uid,
+        username: username,
+        message: message,
+        timestamp: serverTimestamp()
+      });
+
+      messageInput.value = "";
+
+    } catch (error) {
+      console.error("Chat error:", error);
+      alert("Message could not be sent. Please try again.");
+    }
+  };
+
+  // ONLINE PRESENCE
   onValue(connectedRef, async snapshot => {
     if (snapshot.val() !== true) return;
 
@@ -1581,12 +1933,13 @@ window.sendChatMessage = async function() {
   });
 
 } catch (error) {
-  console.error("Authentication error:", error);
+  console.error("Firebase authentication error:", error);
 
   if (onlineCount) {
     onlineCount.textContent = "Login error";
   }
 }
 </script>
+
 </body>
 </html>
