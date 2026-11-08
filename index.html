@@ -470,6 +470,48 @@ body.normal-cursor #settings-menu label {
 #online-count {
   color: white;
 }
+#chat-box {
+  max-width: 750px;
+  margin: 25px auto;
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(255, 122, 26, 0.12);
+}
+
+#chat-messages {
+  height: 350px;
+  overflow-y: auto;
+  background: #101010;
+  border: 1px solid #292929;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+#chat-input-area {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#chat-input-area input {
+  flex: 1;
+  min-width: 120px;
+  padding: 12px;
+  background: #252525;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 7px;
+}
+
+#chat-input-area button {
+  background: #FF7A1A;
+  color: white;
+  border-radius: 8px;
+}
 </style>
 </head>
 
@@ -506,6 +548,7 @@ body.normal-cursor #settings-menu label {
     <button class="category-btn" data-category="profile">Profile</button>
     <button class="category-btn" data-category="ai">AI Bot 🤖</button>
     <button class="category-btn" data-category="web">Web</button>
+    <button class="category-btn" data-category="chat">💬 Global Chat</button>
   </nav>
 </header>
 
@@ -520,6 +563,25 @@ body.normal-cursor #settings-menu label {
   <span id="online-count">Connecting...</span>
   <span>online now</span>
 </div>
+
+</section>
+
+<section id="chat-section" style="display:none; text-align:center; padding:30px 15px;">
+
+  <h1>💬 Global Chat</h1>
+  <p>Chat with everyone online!</p>
+
+  <div id="chat-box">
+    <div id="chat-messages">
+      <p>Welcome to Global Chat! 👋</p>
+    </div>
+
+    <div id="chat-input-area">
+      <input id="chat-username" placeholder="Your username..." maxlength="20">
+      <input id="chat-message" placeholder="Type a message..." maxlength="300">
+      <button onclick="sendChatMessage()">Send</button>
+    </div>
+  </div>
 
 </section>
 
@@ -806,6 +868,7 @@ function updateGames() {
   const profileSection = document.getElementById("profile-section");
   const webSection = document.getElementById("web-section");
   const aiSection = document.getElementById("ai-section");
+  const chatSection = document.getElementById("chat-section");
   const gamesSection = document.querySelector(".games");
   const homeSection = document.getElementById("home-section");
   const gameCount = document.getElementById("game-count");
@@ -821,6 +884,9 @@ function updateGames() {
   aiSection.style.display =
     currentCategory === "ai" ? "block" : "none";
 
+    chatSection.style.display =
+  currentCategory === "chat" ? "block" : "none";
+
   homeSection.style.display =
     currentCategory === "home" ? "block" : "none";
 
@@ -831,7 +897,7 @@ function updateGames() {
     currentCategory === "all" ? "block" : "none";
 
   gamesSection.style.display =
-    ["home", "suggestions", "profile", "web", "ai"].includes(currentCategory)
+    ["home", "suggestions", "profile", "web", "ai", "chat"].includes(currentCategory)
       ? "none"
       : "flex";
 
@@ -1374,7 +1440,12 @@ import {
   ref,
   set,
   onValue,
-  onDisconnect
+  onDisconnect,
+  push,
+  query,
+  orderByChild,
+  limitToLast,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 import {
@@ -1421,6 +1492,80 @@ onValue(onlineRef, snapshot => {
 try {
   const result = await signInAnonymously(auth);
   const user = result.user;
+
+  // GLOBAL CHAT MESSAGE LISTENER
+const chatRef = ref(database, "chat");
+const chatMessages = document.getElementById("chat-messages");
+
+const chatQuery = query(
+  chatRef,
+  orderByChild("timestamp"),
+  limitToLast(50)
+);
+
+onValue(chatQuery, snapshot => {
+  chatMessages.innerHTML = "";
+
+  snapshot.forEach(childSnapshot => {
+    const data = childSnapshot.val();
+
+    const messageDiv = document.createElement("div");
+    messageDiv.style.marginBottom = "15px";
+
+    const username = document.createElement("strong");
+    username.style.color = "#FF7A1A";
+    username.textContent = data.username + ": ";
+
+    const messageText = document.createElement("span");
+    messageText.textContent = data.message;
+
+    const time = document.createElement("small");
+    time.style.color = "#888";
+    time.style.marginLeft = "8px";
+
+    if (data.timestamp) {
+      time.textContent = new Date(data.timestamp).toLocaleTimeString();
+    }
+
+    messageDiv.append(username, messageText, time);
+    chatMessages.appendChild(messageDiv);
+  });
+
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+// SEND CHAT MESSAGE
+window.sendChatMessage = async function() {
+  const usernameInput = document.getElementById("chat-username");
+  const messageInput = document.getElementById("chat-message");
+
+  const username = usernameInput.value.trim();
+  const message = messageInput.value.trim();
+
+  if (!username || !message) {
+    alert("Enter a username and message!");
+    return;
+  }
+
+  if (username.length > 20 || message.length > 300) {
+    alert("Your username or message is too long!");
+    return;
+  }
+
+  try {
+    await push(chatRef, {
+  uid: user.uid,
+  username: username,
+  message: message,
+  timestamp: serverTimestamp()
+});
+
+    messageInput.value = "";
+  } catch (error) {
+    console.error("Chat error:", error);
+    alert("Message could not be sent. Please try again.");
+  }
+};
 
   onValue(connectedRef, async snapshot => {
     if (snapshot.val() !== true) return;
