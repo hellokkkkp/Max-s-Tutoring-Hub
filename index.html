@@ -8,7 +8,15 @@
 <style>
 body {
   margin: 0;
-  background: #101010;
+  background-color: #080604;
+background-image: radial-gradient(
+    circle at 50% 20%,
+    rgba(255, 122, 26, 0.10),
+    transparent 45%
+);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100vh;
   font-family: Arial, sans-serif;
   color: white;
   cursor: none;
@@ -61,20 +69,6 @@ h1 {
   box-shadow: 0 0 8px #FF7A1A, 0 0 18px #FF7A1A, 0 0 28px #FF7A1A;
 }
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-left: auto;
-  flex-wrap: wrap;
-}
-
-.header-actions button {
-  white-space: nowrap;
-  padding: 12px 15px;
-}
-
 button {
   background: #FF7A1A;
   color: white;
@@ -82,16 +76,6 @@ button {
   padding: 12px 25px;
   border-radius: 7px;
   cursor: none;
-}
-
-.categories {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 8px 0 0;
-  flex-wrap: wrap;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .category-btn {
@@ -112,10 +96,12 @@ button {
 }
 
 .category-btn.active {
-    background: #202020;
-    border-color: #444;
-    color: white;
-    box-shadow: none;
+    background: #FF7A1A !important;
+    border-color: #FF7A1A !important;
+    color: white !important;
+    box-shadow: 0 0 8px #FF7A1A,
+                0 0 18px #FF7A1A,
+                0 0 28px rgba(255, 122, 26, 0.5);
 }
 
 .games {
@@ -151,11 +137,11 @@ button {
 }
 
 .game-image {
-  width: 190px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 8px;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
 }
 
 .game-card button:not(.favorite-btn) {
@@ -211,9 +197,7 @@ button {
 }
 
 .recent-section h2,
-#settings-menu h2,
-#weather-box h3,
-#admin-panel h2 {
+#settings-menu h2 {
   color: #FF7A1A;
 }
 
@@ -286,30 +270,6 @@ body.normal-cursor #settings-menu label {
   text-shadow: 0 0 10px #FF7A1A;
 }
 
-#weather-box {
-  position: fixed;
-  bottom: 15px;
-  left: 15px;
-  z-index: 999;
-  background: #181818;
-  border: 1px solid #FF7A1A;
-  border-radius: 12px;
-  padding: 12px;
-  width: 220px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 0 15px rgba(255,122,26,0.3);
-}
-
-#weather-box p {
-  margin: 8px;
-  font-size: 16px;
-}
-
-#weather-box small {
-  color: #999;
-}
-
 #settings-menu {
   position: fixed;
   top: 100px;
@@ -336,30 +296,6 @@ body.normal-cursor #settings-menu label {
   cursor: none;
 }
 
-#admin-panel {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 200000;
-  background: #181818;
-  border: 2px solid #FF7A1A;
-  border-radius: 15px;
-  padding: 25px;
-  width: 300px;
-  color: white;
-  text-align: center;
-  box-shadow: 0 0 30px #FF7A1A;
-}
-
-#admin-panel button {
-  background: #FF7A1A;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: none;
-}
-
 #game-count {
     display: block;
     text-align: center;
@@ -368,17 +304,6 @@ body.normal-cursor #settings-menu label {
     color: #FF7A1A;
     margin: 20px auto;
     text-shadow: 0 0 10px #FF7A1A;
-}
-
-@media (max-width: 900px) {
-  .header-top {
-    justify-content: center;
-  }
-
-  .header-actions {
-    justify-content: center;
-    margin-left: 0;
-  }
 }
 
 @media (max-width: 700px) {
@@ -393,11 +318,6 @@ body.normal-cursor #settings-menu label {
   .header-top h1 {
     font-size: 22px;
     text-align: center;
-  }
-
-  .categories {
-    gap: 8px;
-    padding: 10px 0;
   }
 
   .category-btn {
@@ -425,51 +345,11 @@ body.normal-cursor #settings-menu label {
     box-sizing: border-box;
 }
 
-  #weather-box {
-    width: 160px;
-    font-size: 12px;
-    padding: 8px;
-  }
-
   .panic-button {
     bottom: 10px;
     right: 10px;
     padding: 12px 16px;
   }
-}
-.welcome-title {
-  color: white;
-  font-size: 40px;
-}
-
-.orange-box {
-  background: #FF7A1A;
-  color: black;
-  padding: 5px 12px;
-  border-radius: 7px;
-  display: inline-block;
-}
-#online-counter {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: #171717;
-  border: 1px solid #303030;
-  border-radius: 30px;
-  padding: 7px 13px;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-.online-dot {
-  width: 8px;
-  height: 8px;
-  background: #ff7a1a;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #ff7a1a;
-  flex-shrink: 0;
 }
 
 #online-count {
@@ -600,26 +480,39 @@ body.normal-cursor #settings-menu label {
     transition: background 0.25s ease, color 0.25s ease;
 }
 
+/* SELECTED SIDEBAR CATEGORY */
+#sidebar:hover .category-btn::before {
+    content: none !important;
+    display: none !important;
+}
+
 #sidebar:not(:hover) button {
     width: 48px;
+    height: 48px;
     font-size: 0;
-    padding: 12px 0;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
-#sidebar:not(:hover) .category-btn:nth-child(1)::before { content: "🏠"; font-size: 20px; }
-#sidebar:not(:hover) .category-btn:nth-child(2)::before { content: "🎮"; font-size: 20px; }
-#sidebar:not(:hover) .category-btn:nth-child(3)::before { content: "♥"; font-size: 20px; }
-#sidebar:not(:hover) .category-btn:nth-child(4)::before { content: "💡"; font-size: 20px; }
-#sidebar:not(:hover) .category-btn:nth-child(5)::before { content: "👤"; font-size: 20px; }
-#sidebar:not(:hover) .category-btn:nth-child(6)::before { content: "🤖"; font-size: 20px; }
-#sidebar:not(:hover) .category-btn:nth-child(7)::before { content: "🌐"; font-size: 20px; }
-#sidebar:not(:hover) .category-btn:nth-child(8)::before { content: "💬"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn:nth-child(1)::before { content: "🏠"; }
+#sidebar:not(:hover) .category-btn:nth-child(2)::before { content: "🎮"; }
+#sidebar:not(:hover) .category-btn:nth-child(3)::before { content: "💡"; }
+#sidebar:not(:hover) .category-btn:nth-child(4)::before { content: "👤"; }
+#sidebar:not(:hover) .category-btn:nth-child(5)::before { content: "🤖"; }
+#sidebar:not(:hover) .category-btn:nth-child(6)::before { content: "🌐"; }
+#sidebar:not(:hover) .category-btn:nth-child(7)::before { content: "💬"; }
 
-#sidebar:not(:hover) .sidebar-actions button:nth-child(1)::before { content: "🎵"; font-size: 20px; }
-#sidebar:not(:hover) .sidebar-actions button:nth-child(2)::before { content: "⚙️"; font-size: 20px; }
-#sidebar:not(:hover) .sidebar-actions button:nth-child(3)::before { content: "🔐"; font-size: 20px; }
-#sidebar:not(:hover) .sidebar-actions button:nth-child(4)::before { content: "🎲"; font-size: 20px; }
+#sidebar:not(:hover) .category-btn::before {
+    display: block;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
 
 /* KEEP CLOCK IN TOP RIGHT */
 #live-clock {
@@ -657,50 +550,495 @@ body.normal-cursor #settings-menu label {
     padding: 0 20px;
 }
 
-.home-shortcut {
-    height: 125px;
-    background: linear-gradient(145deg, #252525, #101010);
-    border: 1px solid #3a3a3a;
-    border-radius: 16px;
-    color: #aaa;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: 0.25s ease;
-}
-
-.home-shortcut span {
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #202020;
-    border: 1px solid #333;
-    border-radius: 12px;
-    font-size: 21px;
-}
-
-.home-shortcut p {
-    margin: 0;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.home-shortcut:hover {
-    transform: translateY(-5px);
-    border-color: #FF7A1A;
-    color: white;
-    box-shadow: 0 0 18px rgba(255, 122, 26, 0.35);
-}
-
 @media (max-width: 600px) {
     .home-shortcuts {
         grid-template-columns: repeat(2, minmax(110px, 1fr));
     }
+}
+#game-player {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#game-player iframe {
+    display: block;
+}
+
+.google-logo {
+    font-family: Arial, sans-serif;
+    font-size: 75px;
+    font-weight: bold;
+    letter-spacing: -4px;
+    margin-bottom: 30px;
+}
+
+.google-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(550px, 85vw);
+    padding: 13px 18px;
+    border: 1px solid #555;
+    border-radius: 30px;
+    background: #202020;
+    box-sizing: border-box;
+}
+
+.google-search:hover,
+.google-search:focus-within {
+    box-shadow: 0 0 12px rgba(255, 122, 26, 0.35);
+}
+
+.google-search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    min-width: 0;
+}
+
+.google-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.google-buttons button {
+    background: #303030;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 12px 18px;
+}
+
+.google-buttons button:hover {
+    border-color: #FF7A1A;
+}
+.browser-toolbar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #181818;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.browser-toolbar input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    background: #252525;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.browser-toolbar button {
+    padding: 12px 16px;
+}
+#browser-tabs {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    background: #101010;
+    padding: 10px 10px 0;
+    overflow-x: auto;
+}
+
+.browser-tab {
+    background: #252525;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 9px 9px 0 0;
+    padding: 12px 18px;
+    min-width: 130px;
+}
+
+.browser-tab.active {
+    background: #383838;
+    border-color: #FF7A1A;
+}
+
+.browser-tab span {
+    margin-left: 12px;
+    color: #aaa;
+}
+
+#new-browser-tab {
+    background: #303030;
+    padding: 10px 16px;
+}
+#browser-results h3 {
+    color: #8ab4f8;
+    margin-bottom: 5px;
+}
+
+.search-result {
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+.search-result a {
+    color: #8ab4f8;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.search-result a:hover {
+    text-decoration: underline;
+}
+
+.search-result p {
+    color: #ccc;
+    line-height: 1.5;
+}
+/* ==========================
+   NEW HOMEPAGE DESIGN
+========================== */
+
+.new-home {
+    min-height: 650px;
+    box-sizing: border-box;
+    padding: 65px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: transparent;
+    color: white;
+    overflow: hidden;
+}
+
+.home-logo {
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 800;
+    margin: 0 0 110px;
+    letter-spacing: -2px;
+}
+
+.home-logo span {
+    background: #ff9500;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 7px;
+}
+
+.home-search {
+    width: 90%;
+    max-width: 600px;
+        margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background: #111111;
+    border: 1px solid #393939;
+    border-radius: 40px;
+    transition: 0.3s;
+}
+
+.home-search:focus-within {
+    border-color: #ff8500;
+    box-shadow: 0 0 20px rgba(255, 122, 26, 0.2);
+}
+
+.home-search span {
+    color: #999;
+    font-size: 25px;
+}
+
+.home-search input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+.home-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(6, 112px);
+    gap: 10px;
+    margin: 72px auto 0;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.home-shortcuts button {
+    width: 112px;
+    min-width: 112px;
+    height: 105px;
+    box-sizing: border-box;
+
+    border: 1px solid #39332e;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #292522, #151210);
+    color: #ddd;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.25s;
+}
+
+.home-shortcuts button span {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #302b27;
+    color: #ffad4d;
+    font-size: 23px;
+}
+
+.home-shortcuts button:hover {
+    transform: translateY(-5px);
+    border-color: #ff8500;
+    box-shadow: 0 0 20px rgba(255, 122, 26, 0.2);
+}
+
+.home-online {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: fit-content;
+    margin: 22px auto 0;
+    padding: 5px 12px;
+    border: 1px solid #292929;
+    border-radius: 30px;
+    background: #111113;
+    color: #9999a5;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.home-online span {
+    color: #ff7900;
+    font-size: 9px;
+    text-shadow: 0 0 7px #ff7900;
+}
+
+.home-online b {
+    color: #9999a5;
+    font-weight: 600;
+}
+
+@media (max-width: 750px) {
+    .home-shortcuts {
+        grid-template-columns: repeat(3, 112px);
+        margin: 45px auto 0;
+    }
+}
+
+@media (max-width: 380px) {
+    .home-shortcuts {
+        grid-template-columns: repeat(2, 112px);
+    }
+}
+.games-search-row {
+    display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+flex-wrap: wrap;
+}
+
+.games-search-row #search {
+    margin: 0 !important;
+}
+
+.games-search-row button {
+    padding: 12px 20px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+/* RANDOM GAME ORANGE GLOW */
+#random-button {
+    background: #303030 !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+}
+
+#random-button:hover {
+    background: #303030 !important;
+    color: #FF7A1A !important;
+    border-color: #FF7A1A !important;
+    box-shadow:
+        0 0 8px #FF7A1A,
+        0 0 18px #FF7A1A,
+        0 0 30px rgba(255, 122, 26, 0.7) !important;
+    transform: translateY(-2px);
+}
+/* COLLAPSED SIDEBAR ICONS */
+#sidebar:not(:hover) .category-btn {
+    font-size: 0 !important;
+}
+
+#sidebar:not(:hover) .category-btn::before {
+    display: block !important;
+    font-size: 22px !important;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+#sidebar:not(:hover) .category-btn:nth-child(1)::before { content: "🏠" !important; }
+#sidebar:not(:hover) .category-btn:nth-child(2)::before { content: "🎮" !important; }
+#sidebar:not(:hover) .category-btn:nth-child(3)::before { content: "💡" !important; }
+#sidebar:not(:hover) .category-btn:nth-child(4)::before { content: "👤" !important; }
+#sidebar:not(:hover) .category-btn:nth-child(5)::before { content: "🤖" !important; }
+#sidebar:not(:hover) .category-btn:nth-child(6)::before { content: "🌐" !important; }
+#sidebar:not(:hover) .category-btn:nth-child(7)::before { content: "💬" !important; }
+
+/* SIDEBAR ACTION ICONS */
+#sidebar:not(:hover) #music-button::before { content: "🎵"; }
+#sidebar:not(:hover) #settings-button::before { content: "⚙️"; }
+#sidebar:not(:hover) #admin-button::before { content: "🔐"; }
+#sidebar:not(:hover) #random-button::before { content: "🎲"; }
+
+#sidebar:not(:hover) .sidebar-actions button::before {
+    display: block;
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+}
+/* FIX SIDEBAR CONTENT POSITION */
+#sidebar:not(:hover) .sidebar-content {
+    width: 68px !important;
+}
+
+#sidebar:not(:hover) .sidebar-categories,
+#sidebar:not(:hover) .sidebar-actions {
+    width: 48px !important;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#sidebar:not(:hover) #sidebar button {
+    width: 48px !important;
+    min-width: 48px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    flex-shrink: 0;
+}
+/* MAKE MAX'S WHITE */
+.home-logo .white-logo {
+    color: white !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+/* REMOVE TOP HEADER AND CLOCK */
+header {
+    display: none !important;
+}
+
+#live-clock {
+    display: none !important;
+}
+#back-to-games {
+    background: #303030 !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+    border-radius: 8px;
+    box-shadow: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#back-to-games:hover {
+    background: #303030 !important;
+    color: #FF7A1A !important;
+    border-color: #FF7A1A !important;
+    box-shadow:
+        0 0 8px #FF7A1A,
+        0 0 18px #FF7A1A,
+        0 0 30px rgba(255, 122, 26, 0.7) !important;
+    transform: translateY(-2px);
+}
+.games-search-row .category-btn[data-category="favorites"],
+.games-search-row .category-btn[data-category="favorites"].active {
+    background: #303030 !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.games-search-row .category-btn[data-category="favorites"]:focus {
+    outline: none !important;
+}
+
+.games-search-row .category-btn[data-category="favorites"]:hover,
+.games-search-row .category-btn[data-category="favorites"].active:hover {
+    background: #303030 !important;
+    color: #FF7A1A !important;
+    border-color: #FF7A1A !important;
+    box-shadow:
+        0 0 8px #FF7A1A,
+        0 0 18px #FF7A1A,
+        0 0 30px #FF7A1A !important;
+}
+.recent-game {
+    transition: all 0.3s ease;
+}
+
+.recent-game:hover {
+    background: #202020;
+    color: #FF7A1A;
+    border-color: #FF7A1A;
+    box-shadow:
+        0 0 8px #FF7A1A,
+        0 0 18px #FF7A1A,
+        0 0 30px rgba(255, 122, 26, 0.5);
+    transform: translateY(-3px);
+}
+/* FORCE BACK TO GAMES BUTTON COLORS */
+body #back-to-games {
+    background: #303030 !important;
+    background-color: #303030 !important;
+    background-image: none !important;
+    color: white !important;
+    border: 1px solid #555 !important;
+    box-shadow: none !important;
+    transition: all 0.3s ease !important;
+}
+
+/* ORANGE GLOW ONLY WHEN HOVERING */
+body #back-to-games:hover {
+    background: #303030 !important;
+    background-color: #303030 !important;
+    color: #FF7A1A !important;
+    border-color: #FF7A1A !important;
+    box-shadow:
+        0 0 8px #FF7A1A,
+        0 0 18px #FF7A1A,
+        0 0 30px rgba(255, 122, 26, 0.7) !important;
+    transform: translateY(-2px);
 }
 </style>
 </head>
@@ -708,20 +1046,13 @@ body.normal-cursor #settings-menu label {
 <body>
 <canvas id="particles"></canvas>
 
-<div id="admin-panel" style="display:none;">
-  <h2>🔐 Admin Panel</h2>
-  <button onclick="closeAdminPanel()">✖ Close</button>
-  <h3>Welcome, Admin!</h3>
-</div>
-
 <div id="custom-cursor"></div>
 
 <header>
   <div class="header-top">
     <h1>Max's Tutoring Hub</h1>
-    <input id="search" type="text" placeholder="Search games...">
     <div id="live-clock">Loading time...</div>
-
+  </div>
 </header>
 <aside id="sidebar">
   <div class="sidebar-content">
@@ -729,7 +1060,6 @@ body.normal-cursor #settings-menu label {
     <div class="sidebar-categories">
       <button class="category-btn active" data-category="home">🏠 Home</button>
       <button class="category-btn" data-category="all">🎮 All Games</button>
-      <button class="category-btn" data-category="favorites">♥ Favorites</button>
       <button class="category-btn" data-category="suggestions">💡 Suggestions</button>
       <button class="category-btn" data-category="profile">👤 Profile</button>
       <button class="category-btn" data-category="ai">🤖 AI Bot</button>
@@ -740,68 +1070,70 @@ body.normal-cursor #settings-menu label {
     <div class="sidebar-actions">
       <button onclick="toggleMusic()" id="music-button">🎵 Music ON / OFF</button>
       <button onclick="toggleSettings()" id="settings-button">⚙️ Settings</button>
-      <button onclick="openAdminPanel()" id="admin-button">🔐 Admin</button>
-      <button onclick="randomGame()" id="random-button">🎲 Random Game</button>
     </div>
 
   </div>
 </aside>
 
-<section id="home-section" style="display:none; text-align:center; padding:60px 20px;">
+<section id="home-section" class="new-home">
 
-  <h1 class="welcome-title">
-    Max's <span class="orange-box">Tutoring!</span>
-  </h1>
+    <h1 class="home-logo">
+    <span class="white-logo">Max's</span>
+    <span>Tutoring</span>
+</h1>
 
-  <div id="online-counter">
-  <span class="online-dot"></span>
-  <span id="online-count">Connecting...</span>
-  <span>online now</span>
-</div>
+    <div class="home-search">
+        <span>⌕</span>
+        <input
+            type="text"
+            placeholder="Search the web..."
+            id="home-search"
+            onkeydown="if(event.key === 'Enter') {
+                document.querySelector('[data-category=web]').click();
+                document.getElementById('browser-url').value = this.value;
+                browseWebsite();
+            }"
+        >
+    </div>
 
-<div class="home-shortcuts">
+    <div class="home-shortcuts">
 
-  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=home]').click()">
-    <span>🏠</span>
-    <p>Home</p>
-  </button>
+        <button onclick="document.querySelector('[data-category=all]').click()">
+            <span>▦</span>
+            Games
+        </button>
 
-  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=all]').click()">
-    <span>🎮</span>
-    <p>All Games</p>
-  </button>
+        <button onclick="document.querySelector('[data-category=chat]').click()">
+            <span>☏</span>
+            Chat
+        </button>
 
-  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=favorites]').click()">
-    <span>♥</span>
-    <p>Favorites</p>
-  </button>
+        <button onclick="document.querySelector('[data-category=ai]').click()">
+            <span>✧</span>
+            AI
+        </button>
 
-  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=suggestions]').click()">
+        <button onclick="document.querySelector('[data-category=web]').click()">
+            <span>◎</span>
+            Browser
+        </button>
+
+        <button onclick="document.querySelector('[data-category=suggestions]').click()">
     <span>💡</span>
-    <p>Suggestions</p>
-  </button>
+    Suggestions
+</button>
 
-  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=profile]').click()">
-    <span>👤</span>
-    <p>Profile</p>
-  </button>
+        <button onclick="document.querySelector('[data-category=profile]').click()">
+            <span>🏆</span>
+            Profile
+        </button>
 
-  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=ai]').click()">
-    <span>🤖</span>
-    <p>AI</p>
-  </button>
+    </div>
 
-  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=web]').click()">
-    <span>🌐</span>
-    <p>Browser</p>
-  </button>
-
-  <button class="home-shortcut" onclick="document.querySelector('#sidebar [data-category=chat]').click()">
-    <span>💬</span>
-    <p>Global Chat</p>
-  </button>
-
-</div>
+    <div class="home-online">
+        <span>●</span>
+        <b id="online-count">Connecting...</b> online now
+    </div>
 
 </section>
 
@@ -824,16 +1156,57 @@ body.normal-cursor #settings-menu label {
 
 </section>
 
-<section id="web-section" style="display:none; padding:30px; text-align:center;">
-  <h2>Web Browser</h2>
-  <div style="display:flex; gap:10px; max-width:800px; margin:auto;">
-    <input id="browser-url" type="text" placeholder="Enter a website (example.com)"
-      style="flex:1; padding:12px; border-radius:8px; border:none;">
-    <button onclick="browseWebsite()">Go</button>
-  </div>
-  <iframe id="browser-frame" src="about:blank"
-    style="width:100%; height:600px; margin-top:20px; border:2px solid #FF7A1A; border-radius:10px; background:white;">
-  </iframe>
+<section id="web-section" style="display:none; padding:20px;">
+
+    <h1 style="text-align:center; color:#FF7A1A;">
+        🌐 Max's Browser
+    </h1>
+<div id="browser-tabs">
+    <button class="browser-tab active" onclick="switchBrowserTab(0)">
+        🌐 New Tab
+        <span onclick="event.stopPropagation(); closeBrowserTab(0)">×</span>
+    </button>
+
+    <button onclick="addBrowserTab()" id="new-browser-tab">+</button>
+</div>
+    <div class="browser-toolbar">
+        <button onclick="browserBack()">⬅</button>
+        <button onclick="browserForward()">➡</button>
+        <button onclick="browserReload()">⟳</button>
+
+        <input
+            id="browser-url"
+            type="text"
+            placeholder="Search Google or enter a website..."
+            onkeydown="if(event.key === 'Enter') browseWebsite()"
+        >
+
+        <button onclick="browseWebsite()">GO</button>
+    </div>
+<div id="browser-results" style="
+    display:none;
+    background:#181818;
+    padding:20px;
+    min-height:400px;
+    color:white;
+">
+    <h2 style="color:#FF7A1A;">Search Results</h2>
+    <div id="browser-results-list"></div>
+</div>
+    <iframe
+        id="browser-frame"
+        src="about:blank"
+        allowfullscreen
+        style="
+            width:100%;
+            height:75vh;
+            margin-top:15px;
+            border:2px solid #FF7A1A;
+            border-radius:12px;
+            background:white;
+        ">
+    </iframe>
+
 </section>
 
 <section id="ai-section" style="display:none; text-align:center; padding:40px;">
@@ -848,16 +1221,19 @@ body.normal-cursor #settings-menu label {
   </div>
 </section>
 
-<div id="weather-box">
-  <h3>🌤️ Pawtucket Weather</h3>
-  <p id="weather-temp">Loading temperature...</p>
-  <p id="weather-condition">Loading conditions...</p>
-  <p id="weather-wind">Loading wind speed...</p>
-  <small>Weather by Open-Meteo</small>
-</div>
-
 <div id="settings-menu" style="display:none;">
   <h2>⚙️ Settings</h2>
+<br><br>
+
+<label for="theme-select">🎨 Colors:</label>
+
+<select id="theme-select" onchange="changeTheme(this.value)">
+    <option value="orange">🟠 Orange</option>
+    <option value="blue">🔵 Blue</option>
+    <option value="purple">🟣 Purple</option>
+</select>
+
+<br><br>
 
   <label><input type="checkbox" id="particles-toggle" checked> Floating Particles</label>
   <br><br>
@@ -872,8 +1248,9 @@ body.normal-cursor #settings-menu label {
   <label>Volume: <input type="range" id="volume-slider" min="0" max="100" value="30"></label>
 
   <select id="music-select">
-    <option value="images/background-music.mp3">Minecraft</option>
-    <option value="images/jumpingbunny-roblox-2-294300.mp3">Jumping Bunny</option>
+    <option value="music/background-music.mp3">Minecraft</option>
+    <option value="music/minecraft2.mp3">Minecraft 2</option>
+    <option value="music/jumpingbunny-roblox-2-294300.mp3">Jumping Bunny</option>
   </select>
 
   <br><br>
@@ -881,7 +1258,6 @@ body.normal-cursor #settings-menu label {
   <label><input type="checkbox" id="cursor-toggle" checked> Custom Cursor</label>
   <br><br>
 
-  <label><input type="checkbox" id="weather-toggle" checked> Show Weather</label>
 </div>
 
 <section id="suggestions-section" style="display:none; text-align:center; padding:40px;">
@@ -900,9 +1276,56 @@ body.normal-cursor #settings-menu label {
   <h2>Recently Played</h2>
   <div id="recent-games"><p>No games played yet!</p></div>
 </section>
-
 <span id="game-count">Games: 0</span>
+<section id="game-player" style="display:none; padding:25px; text-align:center;">
 
+    <h1 id="game-title">Now Playing</h1>
+
+    <button onclick="closeGame()">⬅ Back to Games</button>
+
+    <iframe
+        id="game-frame"
+        src="about:blank"
+        allowfullscreen
+        allow="autoplay; fullscreen; gamepad"
+        style="
+            width:100%;
+            height:75vh;
+            margin-top:20px;
+            border:2px solid #FF7A1A;
+            border-radius:12px;
+            background:black;
+        ">
+    </iframe>
+
+</section>
+<div class="games-search-row">
+    <input
+        id="search"
+        type="text"
+        placeholder="🔎 Search games..."
+    >
+
+    <button
+        class="category-btn"
+        data-category="favorites"
+        onclick="document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active')); this.classList.add('active');"
+    >
+        ♥ Favorites
+    </button>
+    <button
+    id="random-button"
+    onclick="randomGame()"
+>
+    🎲 Random Game
+</button>
+    <button
+    id="back-to-games"
+    style="display:none;"
+    onclick="document.querySelector('[data-category=all]').click()">
+    ← Back to Games
+</button>
+</div>
 <section class="games">
   <div class="game-card">
     <img src="images/happywheels.webp" class="game-image" alt="Happy Wheels">
@@ -910,6 +1333,123 @@ body.normal-cursor #settings-menu label {
     <button onclick="playGame('Happy Wheels','https://noahs.academy/games/139.html')">PLAY</button>
     <button class="favorite-btn">♡</button>
   </div>
+  <div class="game-card">
+
+    <img src="images/minecraft.webp" class="game-image" alt="Minecraft 1.12.1">
+
+    <h2>Minecraft 1.12.1</h2>
+
+    <button onclick="playGame('Minecraft 1.12.1','https://noahs.academy/games/164.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <img src="images/supermario64.webp" class="game-image" alt="Super Mario 64">
+
+    <h2>Super Mario 64</h2>
+
+    <button onclick="playGame('Super Mario 64','https://noahs.academy/games/222.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <img src="images/bad-parenting.jpg" class="game-image" alt="Bad Parenting">
+
+    <h2>Bad Parenting</h2>
+
+    <button onclick="playGame('Bad Parenting','https://noahs.academy/games/42.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <img src="images/granny.jpg" class="game-image" alt="Granny">
+
+    <h2>Granny</h2>
+
+    <button onclick="playGame('Granny','https://noahs.academy/games/257.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <img src="images/granny2.jpg" class="game-image" alt="Granny 2">
+
+    <h2>Granny 2</h2>
+
+    <button onclick="playGame('Granny 2','https://noahs.academy/games/258.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <img src="images/bitlife.webp" class="game-image" alt="BitLife">
+
+    <h2>BitLife</h2>
+
+    <button onclick="playGame('BitLife','https://mathkit.org/resource-files/offline/bitlife.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <img src="images/superhot.webp" class="game-image" alt="SUPERHOT">
+
+    <h2>SUPERHOT</h2>
+
+    <button onclick="playGame('SUPERHOT','https://mathkit.org/resource-files/offline/superhot.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <img src="images/findaneedle.jpg" class="game-image" alt="Find a Needle">
+
+    <h2>Find a Needle</h2>
+
+    <button onclick="playGame('Find a Needle','https://noahs.academy/games/526.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
+<div class="game-card">
+
+    <img src="images/treeshateyou.jpg" class="game-image" alt="Trees Hate You">
+
+    <h2>Trees Hate You</h2>
+
+    <button onclick="playGame('Trees Hate You','https://noahs.academy/games/495.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+
+</div>
 
   <div class="game-card">
     <img src="images/pleasedonttouchanything.webp" class="game-image" alt="Please Don't Touch Anything" style="transform:translateY(10px);">
@@ -1000,6 +1540,98 @@ body.normal-cursor #settings-menu label {
     <button class="favorite-btn">♡</button>
 
 </div>
+<div class="game-card">
+    <div class="game-image">
+        <img src="images/fnaf.jpg" alt="FNAF">
+    </div>
+
+    <h2>FNAF</h2>
+
+    <button onclick="playGame('FNAF','https://noahs.academy/games/166.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+</div>
+<div class="game-card">
+    <div class="game-image">
+        <img src="images/fnaf2.jpg" alt="FNAF 2">
+    </div>
+
+    <h2>FNAF 2</h2>
+
+    <button onclick="playGame('FNAF 2','https://noahs.academy/games/167.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+</div>
+<div class="game-card">
+    <div class="game-image">
+        <img src="images/fnaf3.jpg" alt="FNAF 3">
+    </div>
+
+    <h2>FNAF 3</h2>
+
+    <button onclick="playGame('FNAF 3','https://noahs.academy/games/168.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+</div>
+<div class="game-card">
+    <div class="game-image">
+        <img src="images/fnaf4.jpg" alt="FNAF 4">
+    </div>
+
+    <h2>FNAF 4</h2>
+
+    <button onclick="playGame('FNAF 4','https://noahs.academy/games/169.html')">
+        PLAY
+    </button>
+
+    <button class="favorite-btn">♡</button>
+</div>
+<div class="game-card" data-name="FNAF 5">
+    <img src="images/fnaf5.jpg" class="game-image" alt="FNAF 5">
+    <h2>FNAF 5</h2>
+    <button onclick="playGame('FNAF 5', 'https://noahs.academy/games/6.html')">
+        PLAY
+    </button>
+    <button class="favorite-btn" onclick="toggleFavorite('FNAF 5')">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/backrooms.jpg" class="game-image" alt="Backrooms">
+    <h2>Backrooms</h2>
+    <button onclick="playGame('Backrooms','https://noahs.academy/games/208.html')">
+        PLAY
+    </button>
+    <button class="favorite-btn">♡</button>
+</div>
+<div class="game-card">
+    <img src="images/happyroom.jpg" class="game-image" alt="Happy Room">
+    <h2>Happy Room</h2>
+    <button onclick="playGame('Happy Room', 'https://noahs.academy/games/210.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/baldisbasics.webp" class="game-image" alt="Baldi's Basics">
+    <h2>Baldi's Basics</h2>
+    <button onclick="playGame('Baldi\'s Basics', 'https://html5.gdata1.com/baldis-basics/?v=20240713103910')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/gettingoverit.jpg" class="game-image" alt="Getting Over It">
+    <h2>Getting Over It</h2>
+    <button onclick="playGame('Getting Over It', 'https://turbowarp.org/389464290/embed?autoplay&addons=remove-curved-stage-border,pause,gamepad')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/peopleplayground.jpg" class="game-image" alt="People Playground">
+    <h2>People Playground</h2>
+    <button onclick="playGame('People Playground', 'https://noahs.academy/games/309.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
 </section>
 <script>
 
@@ -1009,17 +1641,6 @@ function toggleSettings() {
   const menu = document.getElementById("settings-menu");
   menu.style.display =
     menu.style.display === "none" ? "block" : "none";
-}
-
-function openAdminPanel() {
-  const password = prompt("Enter Admin Password:");
-
-  if (password === "stop123456!") {
-    document.getElementById("admin-panel").style.display = "block";
-    showAdminGames();
-  } else if (password !== null) {
-    alert("Incorrect password!");
-  }
 }
 
 function closeAdminPanel() {
@@ -1069,23 +1690,207 @@ function deleteGame(index) {
   });
 
   showRecentGames();
-  showAdminGames();
   updateGames();
 }
+function browserBack() {
+    document.getElementById("browser-frame").contentWindow.history.back();
+}
 
-function browseWebsite() {
-  let url = document.getElementById("browser-url").value.trim();
+function browserForward() {
+    document.getElementById("browser-frame").contentWindow.history.forward();
+}
 
-  if (!url) {
-    alert("Please enter a website!");
-    return;
-  }
+function browserReload() {
+    document.getElementById("browser-frame").contentWindow.location.reload();
+}
+let browserTabs = [
+    {
+        name: "New Tab",
+        url: "about:blank"
+    }
+];
 
-  if (!url.startsWith("http://") && !url.startsWith("https://")) {
-    url = "https://" + url;
-  }
+let activeBrowserTab = 0;
 
-  document.getElementById("browser-frame").src = url;
+function renderBrowserTabs() {
+    const container = document.getElementById("browser-tabs");
+    container.innerHTML = "";
+
+    browserTabs.forEach((tab, index) => {
+        const button = document.createElement("button");
+        button.className = "browser-tab";
+
+        if (index === activeBrowserTab) {
+            button.classList.add("active");
+        }
+
+        button.onclick = () => switchBrowserTab(index);
+
+        const title = document.createElement("span");
+        title.textContent = tab.name;
+
+        const close = document.createElement("span");
+        close.textContent = " ×";
+        close.style.cursor = "pointer";
+
+        close.onclick = (event) => {
+            event.stopPropagation();
+            closeBrowserTab(index);
+        };
+
+        button.appendChild(title);
+        button.appendChild(close);
+
+        container.appendChild(button);
+    });
+
+    const newTabButton = document.createElement("button");
+    newTabButton.id = "new-browser-tab";
+    newTabButton.textContent = "+";
+    newTabButton.onclick = addBrowserTab;
+
+    container.appendChild(newTabButton);
+}
+
+function addBrowserTab() {
+    browserTabs.push({
+        name: "New Tab",
+        url: "about:blank"
+    });
+
+    activeBrowserTab = browserTabs.length - 1;
+    renderBrowserTabs();
+    loadBrowserTab();
+}
+function switchBrowserTab(index) {
+    activeBrowserTab = index;
+    renderBrowserTabs();
+    loadBrowserTab();
+}
+
+function closeBrowserTab(index) {
+    if (browserTabs.length === 1) {
+        browserTabs[0] = {
+            name: "New Tab",
+            url: "about:blank"
+        };
+        activeBrowserTab = 0;
+    } else {
+        browserTabs.splice(index, 1);
+        activeBrowserTab = Math.min(
+            activeBrowserTab,
+            browserTabs.length - 1
+        );
+    }
+
+    renderBrowserTabs();
+    loadBrowserTab();
+}
+
+function loadBrowserTab() {
+    const tab = browserTabs[activeBrowserTab];
+
+    document.getElementById("browser-results").style.display = "none";
+    document.getElementById("browser-frame").style.display = "block";
+
+    document.getElementById("browser-frame").src = tab.url;
+
+    document.getElementById("browser-url").value =
+        tab.url === "about:blank" ? "" : tab.url;
+}
+function displaySearchResults(results) {
+    const container = document.getElementById("browser-results-list");
+    container.innerHTML = "";
+
+    document.getElementById("browser-results").style.display = "block";
+    document.getElementById("browser-frame").style.display = "none";
+
+    if (!results || results.length === 0) {
+        container.textContent = "No search results found.";
+        return;
+    }
+
+    results.forEach(result => {
+        const card = document.createElement("div");
+        card.className = "search-result";
+
+        const link = document.createElement("a");
+        link.href = "#";
+        link.textContent = result.title;
+
+        link.onclick = event => {
+            event.preventDefault();
+
+            browserTabs.push({
+                name: result.title.substring(0, 16),
+                url: result.url
+            });
+
+            activeBrowserTab = browserTabs.length - 1;
+            renderBrowserTabs();
+            loadBrowserTab();
+        };
+
+        const description = document.createElement("p");
+        description.textContent = result.snippet;
+
+        card.appendChild(link);
+        card.appendChild(description);
+        container.appendChild(card);
+    });
+}
+async function browseWebsite() {
+    const input = document.getElementById("browser-url");
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    const looksLikeURL =
+        text.includes(".") && !text.includes(" ");
+
+    if (looksLikeURL) {
+        let url = text;
+
+        if (!url.startsWith("http://") &&
+            !url.startsWith("https://")) {
+            url = "https://" + url;
+        }
+
+        browserTabs[activeBrowserTab].url = url;
+        browserTabs[activeBrowserTab].name = text.substring(0, 16);
+
+        loadBrowserTab();
+        return;
+    }
+
+    const resultsBox = document.getElementById("browser-results");
+    const resultsList = document.getElementById("browser-results-list");
+
+    document.getElementById("browser-frame").style.display = "none";
+    resultsBox.style.display = "block";
+    resultsList.textContent = "🔎 Searching the internet...";
+
+    try {
+        const response = await fetch(
+            "https://max-tutoring-search.tsantiago10413.workers.dev?q=" +
+            encodeURIComponent(text)
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Search failed");
+        }
+
+        displaySearchResults(data.results);
+
+        browserTabs[activeBrowserTab].name = text.substring(0, 16);
+        browserTabs[activeBrowserTab].url = "about:blank";
+        renderBrowserTabs();
+
+    } catch (error) {
+        resultsList.textContent = "Search error: " + error.message;
+    }
 }
 
 async function sendAIMessage() {
@@ -1161,6 +1966,83 @@ function randomGame() {
     name: "Half-Life",
     url: "https://noahs.academy/games/190.html"
 },
+{
+    name: "Minecraft 1.12.1",
+    url: "https://noahs.academy/games/164.html"
+},
+{
+    name: "Super Mario 64",
+    url: "https://noahs.academy/games/222.html"
+},
+{
+    name: "Bad Parenting",
+    url: "https://noahs.academy/games/42.html"
+},
+{
+    name: "Granny",
+    url: "https://noahs.academy/games/257.html"
+},
+{
+    name: "Granny 2",
+    url: "https://noahs.academy/games/258.html"
+},
+{
+    name: "BitLife",
+    url: "https://mathkit.org/resource-files/offline/bitlife.html"
+},
+{
+    name: "SUPERHOT",
+    url: "https://mathkit.org/resource-files/offline/superhot.html"
+},
+{
+    name: "Find a Needle",
+    url: "https://noahs.academy/games/526.html"
+},
+{
+    name: "Trees Hate You",
+    url: "https://noahs.academy/games/495.html"
+},
+{
+    name: "FNAF",
+    url: "https://noahs.academy/games/166.html"
+},
+{
+    name: "FNAF 2",
+    url: "https://noahs.academy/games/167.html"
+},
+{
+    name: "FNAF 3",
+    url: "https://noahs.academy/games/168.html"
+},
+{
+    name: "FNAF 4",
+    url: "https://noahs.academy/games/169.html"
+},
+{
+    name: "FNAF 5",
+    url: "https://noahs.academy/games/6.html"
+},
+{
+    name: "Backrooms",
+    url: "https://noahs.academy/games/208.html"
+},
+{
+    name: "Happy Room",
+    url: "https://noahs.academy/games/210.html"
+},
+{
+    name: "Baldi's Basics",
+    url: "https://html5.gdata1.com/baldis-basics/?v=20240713103910"
+},
+{
+    name: "Getting Over It",
+    url: "https://turbowarp.org/389464290/embed?autoplay&addons=remove-curved-stage-border,pause,gamepad"
+},
+{
+    name: "People Playground",
+    url: "https://noahs.academy/games/309.html"
+},
+
   ];
 
   const random = Math.floor(Math.random() * games.length);
@@ -1213,6 +2095,7 @@ function updateGames() {
   const gamesSection = document.querySelector(".games");
   const homeSection = document.getElementById("home-section");
   const gameCount = document.getElementById("game-count");
+  const gamesSearchRow = document.querySelector(".games-search-row");
 
   webSection.style.display = currentCategory === "web" ? "block" : "none";
 
@@ -1236,6 +2119,12 @@ function updateGames() {
 
   gameCount.style.display =
     currentCategory === "all" ? "block" : "none";
+
+    gamesSearchRow.style.display =
+    ["all", "favorites"].includes(currentCategory) ? "flex" : "none";
+
+    document.getElementById("back-to-games").style.display =
+    currentCategory === "favorites" ? "inline-block" : "none";
 
   gamesSection.style.display =
     ["home", "suggestions", "profile", "web", "ai", "chat"].includes(currentCategory)
@@ -1329,19 +2218,45 @@ document.querySelectorAll(".favorite-btn").forEach(setupFavoriteButton);
 
 // Recently Played
 function playGame(name, url) {
-  let recentGames = JSON.parse(localStorage.getItem("recentGames")) || [];
+    let recentGames = JSON.parse(localStorage.getItem("recentGames")) || [];
 
-  recentGames = recentGames.filter(game => game.name !== name);
-  recentGames.unshift({ name: name, url: url });
-  recentGames = recentGames.slice(0, 5);
+    recentGames = recentGames.filter(game => game.name !== name);
+    recentGames.unshift({ name: name, url: url });
+    recentGames = recentGames.slice(0, 5);
 
-  localStorage.setItem("recentGames", JSON.stringify(recentGames));
-  localStorage.setItem("gameStartTime", Date.now());
+    localStorage.setItem("recentGames", JSON.stringify(recentGames));
+    localStorage.setItem("gameStartTime", Date.now());
 
-  showRecentGames();
-  window.open(url, "_blank", "noopener,noreferrer");
+    document.getElementById("game-title").textContent = name;
+    document.getElementById("game-frame").src = url;
+
+    document.getElementById("game-player").style.display = "block";
+    document.querySelector(".games").style.display = "none";
+    document.getElementById("search").style.display = "none";
+    document.getElementById("game-count").style.display = "none";
+    document.getElementById("recent-section").style.display = "none";
+    document.getElementById("search").style.display = "none";
+    document.querySelector(".games-search-row").style.display = "none";
+
+    showRecentGames();
+
+    window.scrollTo(0, 0);
 }
+function closeGame() {
+    document.getElementById("game-frame").src = "about:blank";
+    document.getElementById("game-player").style.display = "none";
 
+    currentCategory = "all";
+
+    categoryButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.category === "all");
+    });
+
+    updateGames();
+    document.getElementById("search").style.display = "block";
+document.querySelector(".games-search-row").style.display = "flex";
+    window.scrollTo(0, 0);
+}
 function showRecentGames() {
   const recentContainer = document.getElementById("recent-games");
   let recentGames = JSON.parse(localStorage.getItem("recentGames")) || [];
@@ -1415,7 +2330,7 @@ updateGames();
 // PANIC BUTTON SOUND
 // ===============================
 
-const nukeAlarm = new Audio("images/nuke-alarm.mp3");
+const nukeAlarm = new Audio("music/nuke-alarm.mp3");
 
 function playNukeSound() {
   nukeAlarm.currentTime = 0;
@@ -1472,7 +2387,8 @@ function animateParticles() {
 
     particleCtx.beginPath();
     particleCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    particleCtx.fillStyle = "rgba(255, 122, 26, 0.6)";
+    particleCtx.fillStyle = window.currentThemeParticleColor ||
+    "rgba(255, 122, 26, 0.6)";
     particleCtx.fill();
   });
 
@@ -1548,7 +2464,7 @@ document.addEventListener("mousemove", event => {
 // BACKGROUND MUSIC
 // ===============================
 
-const backgroundMusic = new Audio("images/background-music.mp3");
+const backgroundMusic = new Audio("music/background-music.mp3");
 backgroundMusic.loop = true;
 
 const musicSelect = document.getElementById("music-select");
@@ -1619,7 +2535,6 @@ if (musicToggle) {
 const particlesToggle = document.getElementById("particles-toggle");
 const trailToggle = document.getElementById("trail-toggle");
 const cursorToggle = document.getElementById("cursor-toggle");
-const weatherToggle = document.getElementById("weather-toggle");
 
 if (particlesToggle) {
   particlesToggle.addEventListener("change", () => {
@@ -1656,18 +2571,6 @@ if (cursorToggle) {
   });
 }
 
-if (weatherToggle) {
-  weatherToggle.addEventListener("change", () => {
-    const weatherBox = document.getElementById("weather-box");
-
-    if (weatherBox) {
-      weatherBox.style.display = weatherToggle.checked
-        ? "block"
-        : "none";
-    }
-  });
-}
-
 
 // ===============================
 // LIVE CLOCK
@@ -1683,67 +2586,6 @@ function updateClock() {
 
 updateClock();
 setInterval(updateClock, 1000);
-
-
-// ===============================
-// PAWTUCKET WEATHER
-// ===============================
-
-async function updateWeather() {
-  const temperature = document.getElementById("weather-temp");
-  const conditions = document.getElementById("weather-condition");
-  const wind = document.getElementById("weather-wind");
-
-  try {
-    const response = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=41.8787&longitude=-71.3826&current=temperature_2m,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph"
-    );
-
-    const data = await response.json();
-    const current = data.current;
-
-    const weatherCodes = {
-      0: "Clear sky ☀️",
-      1: "Mostly clear 🌤️",
-      2: "Partly cloudy ⛅",
-      3: "Cloudy ☁️",
-      45: "Foggy 🌫️",
-      48: "Foggy 🌫️",
-      51: "Light drizzle 🌦️",
-      61: "Rain 🌧️",
-      63: "Rain 🌧️",
-      65: "Heavy rain 🌧️",
-      71: "Snow 🌨️",
-      73: "Snow 🌨️",
-      75: "Heavy snow ❄️",
-      80: "Rain showers 🌦️",
-      95: "Thunderstorm ⛈️"
-    };
-
-    if (temperature) {
-      temperature.textContent =
-        Math.round(current.temperature_2m) + "°F";
-    }
-
-    if (conditions) {
-      conditions.textContent =
-        weatherCodes[current.weather_code] || "Unknown";
-    }
-
-    if (wind) {
-      wind.textContent =
-        current.wind_speed_10m + " mph";
-    }
-
-  } catch (error) {
-    if (conditions) {
-      conditions.textContent = "Weather unavailable";
-    }
-  }
-}
-
-updateWeather();
-setInterval(updateWeather, 600000);
 
 
 // ===============================
@@ -1857,7 +2699,7 @@ try {
       messageDiv.style.marginBottom = "15px";
 
       const username = document.createElement("strong");
-      username.style.color = "#FF7A1A";
+      username.style.color = window.currentThemeAccent || "#FF7A1A";
       username.textContent = data.username + ": ";
 
       const messageText = document.createElement("span");
@@ -1939,6 +2781,88 @@ try {
     onlineCount.textContent = "Login error";
   }
 }
+
+window.changeTheme = function(theme) {
+    const colors = {
+        orange: {
+            accent: "#FF7A1A",
+            particle: "rgba(255, 122, 26, 0.6)"
+        },
+        blue: {
+            accent: "#2196F3",
+            particle: "rgba(33, 150, 243, 0.6)"
+        },
+        purple: {
+            accent: "#A855F7",
+            particle: "rgba(168, 85, 247, 0.6)"
+        }
+    };
+
+    const selected = colors[theme] || colors.orange;
+    // UPDATE HOMEPAGE COLORS
+let homeThemeStyle = document.getElementById("home-theme-style");
+
+if (!homeThemeStyle) {
+    homeThemeStyle = document.createElement("style");
+    homeThemeStyle.id = "home-theme-style";
+    document.head.appendChild(homeThemeStyle);
+}
+
+homeThemeStyle.textContent = `
+    .new-home {
+    background: transparent !important;
+}
+
+    .home-logo span:not(.white-logo) {
+        background: ${selected.accent} !important;
+    }
+
+    .home-shortcuts button:hover {
+        border-color: ${selected.accent} !important;
+        box-shadow: 0 0 20px ${selected.accent}55 !important;
+    }
+
+    .home-shortcuts button span {
+        color: ${selected.accent} !important;
+    }
+
+    .home-online span {
+        color: ${selected.accent} !important;
+    }
+
+    .home-search:focus-within {
+        border-color: ${selected.accent} !important;
+        box-shadow: 0 0 20px ${selected.accent}55 !important;
+    }
+`;
+
+    localStorage.setItem("selectedTheme", theme);
+
+    window.currentThemeAccent = selected.accent;
+    window.currentThemeParticleColor = selected.particle;
+
+    // Update existing chat usernames
+    document.querySelectorAll("#chat-messages strong").forEach(name => {
+        name.style.color = selected.accent;
+    });
+
+    // Update existing CSS colors
+    document.querySelectorAll("style").forEach(style => {
+        style.textContent = style.textContent
+            .replaceAll("#FF7A1A", selected.accent)
+            .replaceAll("#ff7a1a", selected.accent)
+            .replaceAll("#2196F3", selected.accent)
+            .replaceAll("#2196f3", selected.accent)
+            .replaceAll("#A855F7", selected.accent)
+            .replaceAll("#a855f7", selected.accent);
+    });
+};
+
+window.addEventListener("DOMContentLoaded", function() {
+    const savedTheme = localStorage.getItem("selectedTheme") || "orange";
+    document.getElementById("theme-select").value = savedTheme;
+    window.changeTheme(savedTheme);
+});
 </script>
 
 </body>
