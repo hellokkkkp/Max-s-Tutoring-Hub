@@ -291,31 +291,29 @@ body.normal-cursor #settings-menu label {
   text-shadow: 0 0 10px #FF7A1A;
 }
 
-#settings-menu {
-  position: fixed;
-  top: 100px;
-  right: 20px;
-  z-index: 10000;
-  background: #181818;
-  border: 1px solid #FF7A1A;
-  border-radius: 12px;
-  padding: 20px;
-  width: 220px;
-  box-shadow: 0 0 20px rgba(255,122,26,0.3);
-}
-
-#settings-menu h2 {
-  margin-top: 0;
-}
-
-#settings-menu label {
-  cursor: none;
-}
-
-#settings-menu input {
-  accent-color: #FF7A1A;
-  cursor: none;
-}
+.settings-page { max-width: 1050px; margin: 30px auto 60px; padding: 0 24px; color: #f4f4f4; }
+.settings-heading { margin-bottom: 26px; }
+.settings-heading h2 { margin: 0 0 8px; color: var(--hub-accent, #FF7A1A); font-size: clamp(28px, 4vw, 38px); }
+.settings-heading p, .setting-description { color: #aaa; line-height: 1.55; margin: 0; }
+.settings-grid { display: grid; gap: 18px; }
+.settings-card { background: linear-gradient(145deg, #1c1c1c, #151515); border: 1px solid #343434; border-radius: 14px; padding: 22px; box-shadow: 0 8px 24px #0003; }
+.settings-card h3 { color: var(--hub-accent, #FF7A1A); margin: 0 0 5px; font-size: 19px; }
+.settings-card > p { color: #aaa; margin: 0 0 17px; line-height: 1.5; }
+.setting-row { display: flex; gap: 18px; align-items: center; justify-content: space-between; padding: 13px 0; border-top: 1px solid #303030; }
+.setting-copy { min-width: 0; }
+.setting-copy strong { display: block; margin-bottom: 4px; }
+.setting-copy span { color: #aaa; font-size: 13px; line-height: 1.45; }
+.setting-control { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
+.settings-page select, .settings-page input:not([type=checkbox]):not([type=color]):not([type=range]) { background: #101010; border: 1px solid #444; border-radius: 8px; color: #fff; padding: 10px 12px; min-width: 170px; }
+.settings-page input[type=checkbox] { width: 19px; height: 19px; accent-color: var(--hub-accent, #FF7A1A); }
+.settings-page input[type=color] { width: 48px; height: 38px; padding: 2px; background: #111; border: 1px solid #444; border-radius: 7px; }
+.settings-page input[type=range] { accent-color: var(--hub-accent, #FF7A1A); width: 150px; }
+.settings-page button { background: #262626; color: #fff; border: 1px solid var(--hub-accent, #FF7A1A); border-radius: 8px; padding: 10px 14px; cursor: pointer; }
+.settings-page button:hover { background: #33251b; }
+.settings-note { color: #aaa; font-size: 13px; }
+.settings-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.weather-widget { color: #ddd; font-size: 13px; }
+@media (max-width: 700px) { .settings-page { margin: 20px auto 40px; padding: 0 12px; } .settings-card { padding: 17px; } .setting-row { align-items: flex-start; flex-direction: column; gap: 10px; } .setting-control { justify-content: flex-start; width: 100%; } .settings-page select, .settings-page input:not([type=checkbox]):not([type=color]):not([type=range]) { box-sizing: border-box; width: 100%; } }
 
 #game-count {
     display: block;
@@ -1072,7 +1070,7 @@ body #back-to-games:hover {
 <header>
   <div class="header-top">
     <h1>Max's Tutoring Hub</h1>
-    <div id="live-clock">Loading time...</div>
+    <div><div id="live-clock">Loading time...</div><div id="weather-widget" class="weather-widget" hidden></div></div>
   </div>
 </header>
 <aside id="sidebar">
@@ -1250,44 +1248,33 @@ body #back-to-games:hover {
   </div>
 </section>
 
-<div id="settings-menu" style="display:none;">
-  <h2>⚙️ Settings</h2>
-<br><br>
-
-<label for="theme-select">🎨 Colors:</label>
-
-<select id="theme-select" onchange="changeTheme(this.value)">
-    <option value="orange">🟠 Orange</option>
-    <option value="blue">🔵 Blue</option>
-    <option value="purple">🟣 Purple</option>
-</select>
-
-<br><br>
-
-  <label><input type="checkbox" id="particles-toggle" checked> Floating Particles</label>
-  <br><br>
-
-  <label><input type="checkbox" id="trail-toggle" checked> Mouse Trail</label>
-  <br><br>
-
-  <label><input type="checkbox" id="music-toggle"> Background Music</label>
-  <br><br>
-
-  <label for="music-select">🎵 Choose Music</label>
-  <label>Volume: <input type="range" id="volume-slider" min="0" max="100" value="30"></label>
-
-  <select id="music-select">
-    <option value="music/background-music.mp3">Minecraft</option>
-    <option value="music/minecraft2.mp3">Minecraft 2</option>
-    <option value="music/jumpingbunny-roblox-2-294300.mp3">Jumping Bunny</option>
-  </select>
-
-  <br><br>
-
-  <label><input type="checkbox" id="cursor-toggle" checked> Custom Cursor</label>
-  <br><br>
-
-</div>
+<section id="settings-menu" class="settings-page" style="display:none;">
+ <div class="settings-heading"><h2>⚙️ Settings</h2><p>Personalize the look, behavior, and sound of Max's Tutoring Hub.</p></div>
+ <div class="settings-grid">
+  <section class="settings-card"><h3>Appearance</h3><p>Choose the color and background that feel right for your hub.</p>
+   <div class="setting-row"><div class="setting-copy"><strong>Accent color</strong><span>Applies across buttons, highlights, and effects.</span></div><div class="setting-control"><select id="theme-select"><option value="orange">Orange</option><option value="blue">Blue</option><option value="purple">Purple</option><option value="custom">Custom</option></select><input type="color" id="accent-color-picker" value="#FF7A1A" aria-label="Choose custom accent color"><input id="accent-hex" value="#FF7A1A" maxlength="7" aria-label="Custom accent HEX"></div></div>
+   <div class="setting-row"><div class="setting-copy"><strong>Background theme</strong><span>Switch between subtle dark surfaces.</span></div><div class="setting-control"><select id="background-theme"><option value="midnight">Midnight</option><option value="obsidian">Obsidian</option><option value="slate">Slate</option><option value="mocha">Mocha</option></select></div></div>
+  </section>
+  <section class="settings-card"><h3>Tab appearance</h3><p>Customize how this site appears in your browser tab.</p>
+   <div class="setting-row"><div class="setting-copy"><strong>Tab title</strong><span>Leave blank to use the default title.</span></div><div class="setting-control"><input id="custom-tab-title" placeholder="Max's Tutoring Hub"><button id="save-tab-title">Save title</button></div></div>
+   <div class="setting-row"><div class="setting-copy"><strong>Tab icon</strong><span>Use an image URL or upload an image file.</span></div><div class="setting-control"><input id="favicon-url" placeholder="https://example.com/icon.png"><button id="save-favicon-url">Use URL</button><input type="file" id="favicon-upload" accept="image/*" aria-label="Upload tab icon"></div></div>
+  </section>
+  <section class="settings-card"><h3>Browsing</h3><p>Open a clean or blank browser tab from the hub.</p><div class="settings-actions"><button id="open-blank-tab">Open blank tab</button><button id="open-clean-tab">Open clean tab</button></div><div class="setting-row"><div class="setting-copy"><strong>Popup ads</strong><span>No popup ad feature is active on this site.</span></div><span class="settings-note">Not applicable</span></div><div class="setting-row"><div class="setting-copy"><strong>Text obfuscation</strong><span>No text obfuscation feature is active on this site.</span></div><span class="settings-note">Not applicable</span></div></section>
+  <section class="settings-card"><h3>Effects and behavior</h3><p>Turn visual effects and browser behavior on or off.</p>
+   <label class="setting-row"><span class="setting-copy"><strong>Floating particles</strong><span>Animated particles behind the page.</span></span><span class="setting-control"><input type="checkbox" id="particles-toggle" checked></span></label>
+   <label class="setting-row"><span class="setting-copy"><strong>Mouse trail</strong><span>Show the glowing trail while moving the pointer.</span></span><span class="setting-control"><input type="checkbox" id="trail-toggle" checked></span></label>
+   <label class="setting-row"><span class="setting-copy"><strong>Custom cursor</strong><span>Use the hub's orange ring cursor.</span></span><span class="setting-control"><input type="checkbox" id="cursor-toggle" checked></span></label>
+   <label class="setting-row"><span class="setting-copy"><strong>Anti-close warning</strong><span>Ask before leaving or refreshing this page.</span></span><span class="setting-control"><input type="checkbox" id="anti-close-toggle"></span></label>
+   <label class="setting-row"><span class="setting-copy"><strong>Show weather</strong><span>Weather uses the city you enter below; no location permission is requested.</span></span><span class="setting-control"><input type="checkbox" id="weather-toggle"></span></label>
+   <div class="setting-row"><div class="setting-copy"><strong>Weather city</strong><span>Enter a city to look up current conditions.</span></div><div class="setting-control"><input id="weather-city" placeholder="City name"><button id="save-weather-city">Update weather</button></div></div>
+  </section>
+  <section class="settings-card"><h3>Music</h3><p>Choose a track, control its volume, and toggle playback.</p>
+   <label class="setting-row"><span class="setting-copy"><strong>Background music</strong><span>Playback starts when enabled, subject to browser audio policies.</span></span><span class="setting-control"><input type="checkbox" id="music-toggle"></span></label>
+   <div class="setting-row"><div class="setting-copy"><strong>Track</strong></div><div class="setting-control"><select id="music-select"><option value="music/background-music.mp3">Minecraft</option><option value="music/minecraft2.mp3">Minecraft 2</option><option value="music/jumpingbunny-roblox-2-294300.mp3">Jumping Bunny</option></select></div></div>
+   <div class="setting-row"><div class="setting-copy"><strong>Volume <span id="volume-value">30%</span></strong></div><div class="setting-control"><input type="range" id="volume-slider" min="0" max="100" value="30" aria-label="Music volume"></div></div>
+  </section>
+ </div>
+</section>
 
 <section id="suggestions-section" style="display:none; text-align:center; padding:40px;">
   <h2>Suggestions</h2>
@@ -1810,9 +1797,8 @@ body #back-to-games:hover {
 const search = document.getElementById("search");
 
 function toggleSettings() {
-  const menu = document.getElementById("settings-menu");
-  menu.style.display =
-    menu.style.display === "none" ? "block" : "none";
+  currentCategory = currentCategory === "settings" ? "home" : "settings";
+  updateGames();
 }
 
 function closeAdminPanel() {
@@ -2374,6 +2360,7 @@ function updateGames() {
   const chatSection = document.getElementById("chat-section");
   const gamesSection = document.querySelector(".games");
   const homeSection = document.getElementById("home-section");
+  const settingsSection = document.getElementById("settings-menu");
   const gameCount = document.getElementById("game-count");
   const gamesSearchRow = document.querySelector(".games-search-row");
 
@@ -2394,6 +2381,8 @@ function updateGames() {
   homeSection.style.display =
     currentCategory === "home" ? "block" : "none";
 
+  settingsSection.style.display = currentCategory === "settings" ? "block" : "none";
+
   recentSection.style.display =
     currentCategory === "all" ? "block" : "none";
 
@@ -2407,7 +2396,7 @@ function updateGames() {
     currentCategory === "favorites" ? "inline-block" : "none";
 
   gamesSection.style.display =
-    ["home", "suggestions", "profile", "web", "ai", "chat"].includes(currentCategory)
+    ["home", "suggestions", "profile", "web", "ai", "chat", "settings"].includes(currentCategory)
         ? "none"
         : "grid";
 
@@ -2891,7 +2880,7 @@ const musicSelect = document.getElementById("music-select");
 const volumeSlider = document.getElementById("volume-slider");
 const musicToggle = document.getElementById("music-toggle");
 
-let musicEnabled = true;
+let musicEnabled = false;
 
 function toggleMusic() {
   musicEnabled = !musicEnabled;
@@ -2913,6 +2902,7 @@ function toggleMusic() {
   if (musicToggle) {
     musicToggle.checked = musicEnabled;
   }
+  window.syncHubMusicSetting?.(musicEnabled);
 }
 
 if (musicSelect) {
@@ -2946,6 +2936,16 @@ if (musicToggle) {
     }
   });
 }
+
+window.setHubMusicEnabled = function(enabled) {
+  musicEnabled = Boolean(enabled);
+  if (musicToggle) musicToggle.checked = musicEnabled;
+  if (musicEnabled) backgroundMusic.play().catch(() => {});
+  else backgroundMusic.pause();
+  const musicButton = document.getElementById("music-button");
+  if (musicButton) musicButton.textContent = musicEnabled ? "🎵 Music ON / OFF" : "🔇 Music OFF";
+};
+window.hubBackgroundMusic = backgroundMusic;
 
 
 // ===============================
@@ -3203,6 +3203,7 @@ try {
 }
 
 window.changeTheme = function(theme) {
+    if (window.applyHubTheme) return window.applyHubTheme(theme);
     const colors = {
         orange: {
             accent: "#FF7A1A",
@@ -3279,9 +3280,7 @@ homeThemeStyle.textContent = `
 };
 
 window.addEventListener("DOMContentLoaded", function() {
-    const savedTheme = localStorage.getItem("selectedTheme") || "orange";
-    document.getElementById("theme-select").value = savedTheme;
-    window.changeTheme(savedTheme);
+    window.loadHubSettings?.();
 });
 </script>
 <script>
@@ -3353,5 +3352,8 @@ function typeTagline() {
 
 typeTagline();
 </script>
+<script src="settings-controller.js"></script>
 </body>
 </html>
+
+
