@@ -7,19 +7,21 @@
 
 <style>
 body {
-  margin: 0;
-  background-color: #080604;
-background-image: radial-gradient(
-    circle at 50% 20%,
-    rgba(255, 122, 26, 0.10),
-    transparent 45%
-);
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: 100% 100vh;
-  font-family: Arial, sans-serif;
-  color: white;
-  cursor: none;
+    margin: 0;
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        #241306 0%,
+        #100904 55%,
+        #050403 100%
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    cursor: none;
+    position: relative;
+    isolation: isolate;
 }
 
 header {
@@ -144,6 +146,25 @@ button {
     display: block;
 }
 
+.game-image-placeholder {
+    display: grid;
+    place-items: center;
+    padding: 12px;
+    box-sizing: border-box;
+    background: #181818;
+    border: 1px solid #3a3a3a;
+    color: #FF7A1A;
+    text-align: center;
+    font-size: 14px;
+}
+
+.game-status {
+    margin: 6px 0 0;
+    color: #ffb4a5;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
 .game-card button:not(.favorite-btn) {
   transition: all 0.3s ease;
 }
@@ -217,13 +238,13 @@ button {
 }
 
 #particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .mouse-glow {
@@ -717,7 +738,7 @@ body.normal-cursor #settings-menu label {
 .home-logo {
     font-size: clamp(36px, 6vw, 60px);
     font-weight: 800;
-    margin: 0 0 110px;
+    margin: 0 0 12px;
     letter-spacing: -2px;
 }
 
@@ -1081,6 +1102,14 @@ body #back-to-games:hover {
     <span class="white-logo">Max's</span>
     <span>Tutoring</span>
 </h1>
+<p id="home-tagline" style="
+    color: #cccccc;
+    font-size: 15px;
+    margin-top: 14px;
+    min-height: 22px;
+">
+    |
+</p>
 
     <div class="home-search">
         <span>⌕</span>
@@ -1464,6 +1493,12 @@ body #back-to-games:hover {
     <button onclick="playGame('Plants vs. Zombies','https://noahs.academy/games/467.html')">PLAY</button>
     <button class="favorite-btn">♡</button>
   </div>
+  <div class="game-card">
+    <img src="images/pvz2.jpg" class="game-image" alt="Plants vs Zombies 2">
+    <h2>Plants vs Zombies 2</h2>
+    <button onclick="playGame('Plants vs Zombies 2', 'https://noahs.academy/games/92.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
 </div>
 <div class="game-card">
 
@@ -1601,6 +1636,25 @@ body #back-to-games:hover {
     <button class="favorite-btn" onclick="toggleFavorite('FNAF 5')">♥</button>
 </div>
 <div class="game-card">
+    <img src="images/fnaf6.jpg" class="game-image" alt="FNAF 6">
+    <h2>FNAF 6</h2>
+    <button onclick="playGame('FNAF 6', 'https://noahs.academy/games/1.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/fnaf7.jpg" class="game-image" alt="FNAF 7">
+    <h2>FNAF 7</h2>
+    <button onclick="playGame('FNAF 7', 'https://noahs.academy/games/30.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<!-- FNAF 8 -->
+<div class="game-card">
+    <img src="images/fnaf8.jpg" class="game-image" alt="FNAF 8">
+    <h2>FNAF 8</h2>
+    <button onclick="playGame('FNAF 8', 'https://noahs.academy/games/485.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
     <img src="images/backrooms.jpg" class="game-image" alt="Backrooms">
     <h2>Backrooms</h2>
     <button onclick="playGame('Backrooms','https://noahs.academy/games/208.html')">
@@ -1632,7 +1686,125 @@ body #back-to-games:hover {
     <button onclick="playGame('People Playground', 'https://noahs.academy/games/309.html')">PLAY</button>
     <button class="favorite-btn">♥</button>
 </div>
+<div class="game-card">
+    <img src="images/kindergarten.jpg" class="game-image" alt="Kindergarten">
+    <h2>Kindergarten</h2>
+    <button onclick="playGame('Kindergarten', 'https://noahs.academy/games/41.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/kindergarten2.jpg" class="game-image" alt="Kindergarten 2">
+    <h2>Kindergarten 2</h2>
+    <button onclick="playGame('Kindergarten 2', 'https://noahs.academy/games/40.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/kindergarten3.jpg" class="game-image" alt="Kindergarten 3">
+    <h2>Kindergarten 3</h2>
+    <button onclick="playGame('Kindergarten 3', 'https://noahs.academy/games/39.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/slimerancher.jpg" class="game-image" alt="Slime Rancher">
+    <h2>Slime Rancher</h2>
+    <button onclick="playGame('Slime Rancher', 'https://noahs.academy/games/64.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<div class="game-card">
+    <img src="images/tattletail.jpg" class="game-image" alt="Tattletail">
+    <h2>Tattletail</h2>
+    <button onclick="playGame('Tattletail', 'https://noahs.academy/games/71.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+<!-- Call of Duty 4 -->
+<div class="game-card">
+    <img src="images/cod4.jpg" class="game-image" alt="Call of Duty 4">
+    <h2>Call of Duty 4</h2>
+    <button onclick="playGame('Call of Duty 4', 'https://noahs.academy/games/129.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Call of Duty -->
+<div class="game-card">
+    <img src="images/cod.jpg" class="game-image" alt="Call of Duty">
+    <h2>Call of Duty</h2>
+    <button onclick="playGame('Call of Duty', 'https://noahs.academy/games/130.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Grand Theft Auto: Vice City -->
+<div class="game-card">
+    <img src="images/gtav.jpg" class="game-image" alt="Grand Theft Auto Vice City">
+    <h2>Gta: vice city</h2>
+    <button onclick="playGame('Grand Theft Auto: Vice City', 'https://noahs.academy/games/149.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Midnight Shift -->
+<div class="game-card">
+    <img src="images/midnightshift.jpg" class="game-image" alt="Midnight Shift">
+    <h2>Midnight Shift</h2>
+    <button onclick="playGame('Midnight Shift', 'https://noahs.academy/games/159.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- CloverPit -->
+<div class="game-card">
+    <img src="images/cloverpit.jpg" class="game-image" alt="CloverPit">
+    <h2>CloverPit</h2>
+    <button onclick="playGame('CloverPit', 'https://noahs.academy/games/342.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Shift at Midnight -->
+<div class="game-card">
+    <img src="images/shiftatmidnight.jpg" class="game-image" alt="Shift at Midnight">
+    <h2>Shift at Midnight</h2>
+    <button onclick="playGame('Shift at Midnight', 'https://noahs.academy/games/362.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Bendy and the Ink Machine -->
+<div class="game-card">
+    <img src="images/bendy.jpg" class="game-image" alt="Bendy">
+    <h2>Bendy</h2>
+    <button onclick="playGame('Bendy', 'https://noahs.academy/games/374.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Lethal Ape -->
+<div class="game-card">
+    <img src="images/lethalape.jpg" class="game-image" alt="Lethal Ape">
+    <h2>Lethal Ape</h2>
+    <button onclick="playGame('Lethal Ape', 'https://noahs.academy/games/447.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Slendytubbies 2 -->
+<div class="game-card">
+    <img src="images/slendy2.jpg" class="game-image" alt="Slendytubbies 2">
+    <h2>Slendytubbies 2</h2>
+    <button onclick="playGame('Slendytubbies 2', 'https://noahs.academy/games/457.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Battle Sim -->
+<div class="game-card">
+    <img src="images/battlesim.jpg" class="game-image" alt="Battle Sim">
+    <h2>Battle Sim</h2>
+    <button onclick="playGame('Battle Sim', 'https://noahs.academy/games/462.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
+
+<!-- Cuphead -->
+<div class="game-card">
+    <img src="images/cuphead.jpg" class="game-image" alt="Cuphead">
+    <h2>Cuphead</h2>
+    <button onclick="playGame('Cuphead', 'https://noahs.academy/games/266.html')">PLAY</button>
+    <button class="favorite-btn">♥</button>
+</div>
 </section>
+<script src="games-catalog.js"></script>
 <script>
 
 const search = document.getElementById("search");
@@ -1933,6 +2105,33 @@ async function sendAIMessage() {
 }
 
 function randomGame() {
+  const cardGames = Array.from(document.querySelectorAll(".game-card"))
+    .map(card => {
+      const title = card.querySelector("h2")?.textContent.trim() || "";
+      const playButton = card.querySelector("button:not(.favorite-btn)");
+      const handler = playButton?.getAttribute("onclick") || "";
+      const routeMatch = handler.match(/,\s*(['"])(.*?)\1\s*\)/);
+      const url = card.dataset.gameUrl || (routeMatch ? routeMatch[2] : "");
+      return { name: title, url, disabled: !playButton || playButton.disabled };
+    })
+    .filter(game => game.name && game.url && !game.disabled);
+
+  if (cardGames.length) {
+    const usedTitles = new Set();
+    const usedRoutes = new Set();
+    const uniqueGames = cardGames.filter(game => {
+      const titleKey = game.name.toLowerCase().replace(/[^a-z0-9]/g, "");
+      const routeKey = game.url.toLowerCase().replace(/\/$/, "");
+      if (usedTitles.has(titleKey) || usedRoutes.has(routeKey)) return false;
+      usedTitles.add(titleKey);
+      usedRoutes.add(routeKey);
+      return true;
+    });
+    const selected = uniqueGames[Math.floor(Math.random() * uniqueGames.length)];
+    if (selected) playGame(selected.name, selected.url);
+    return;
+  }
+
   const games = [
     {
       name: "Happy Wheels",
@@ -1942,6 +2141,10 @@ function randomGame() {
       name: "Plants vs. Zombies",
       url: "https://noahs.academy/games/467.html"
     },
+    {
+    name: "Plants vs Zombies 2",
+    url: "https://noahs.academy/games/92.html"
+},
     {
     name: "Please Don't Touch Anything",
     url: "https://noahs.academy/games/155.html"
@@ -2023,6 +2226,18 @@ function randomGame() {
     url: "https://noahs.academy/games/6.html"
 },
 {
+    name: "FNAF 6",
+    url: "https://noahs.academy/games/1.html"
+},
+{
+    name: "FNAF 7",
+    url: "https://noahs.academy/games/30.html"
+},
+{
+    name: "FNAF 8",
+    url: "https://noahs.academy/games/485.html"
+},
+{
     name: "Backrooms",
     url: "https://noahs.academy/games/208.html"
 },
@@ -2041,6 +2256,70 @@ function randomGame() {
 {
     name: "People Playground",
     url: "https://noahs.academy/games/309.html"
+},
+{
+    name: "Kindergarten",
+    url: "https://noahs.academy/games/41.html"
+},
+{
+    name: "Kindergarten 2",
+    url: "https://noahs.academy/games/40.html"
+},
+{
+    name: "Kindergarten 3",
+    url: "https://noahs.academy/games/39.html"
+},
+{
+    name: "Slime Rancher",
+    url: "https://noahs.academy/games/64.html"
+},
+{
+    name: "Tattletail",
+    url: "https://noahs.academy/games/71.html"
+},
+{
+    name: "Call of Duty 4",
+    url: "https://noahs.academy/games/129.html"
+},
+{
+    name: "Call of Duty",
+    url: "https://noahs.academy/games/130.html"
+},
+{
+    name: "Grand Theft Auto: Vice City",
+    url: "https://noahs.academy/games/149.html"
+},
+{
+    name: "Midnight Shift",
+    url: "https://noahs.academy/games/159.html"
+},
+{
+    name: "CloverPit",
+    url: "https://noahs.academy/games/342.html"
+},
+{
+    name: "Shift at Midnight",
+    url: "https://noahs.academy/games/362.html"
+},
+{
+    name: "Bendy",
+    url: "https://noahs.academy/games/374.html"
+},
+{
+    name: "Lethal Ape",
+    url: "https://noahs.academy/games/447.html"
+},
+{
+    name: "Slendytubbies 2",
+    url: "https://noahs.academy/games/457.html"
+},
+{
+    name: "Battle Sim",
+    url: "https://noahs.academy/games/462.html"
+},
+{
+    name: "Cuphead",
+    url: "https://noahs.academy/games/266.html"
 },
 
   ];
@@ -2061,6 +2340,7 @@ savedGames.forEach(game => {
 
     const card = document.createElement("div");
     card.className = "game-card";
+  card.dataset.gameUrl = game.url || "";
 
   card.innerHTML = `
     <img src="${game.image}" class="game-image" alt="${game.name}">
@@ -2216,6 +2496,124 @@ function setupFavoriteButton(button) {
 
 document.querySelectorAll(".favorite-btn").forEach(setupFavoriteButton);
 
+function normalizeGameTitle(title) {
+  return String(title || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function normalizeGameRoute(route) {
+  if (!route) return "";
+  try {
+    return new URL(route, window.location.href).href.replace(/\/$/, "").toLowerCase();
+  } catch (error) {
+    return String(route).trim().toLowerCase().replace(/\/$/, "");
+  }
+}
+
+function getGameCardRoute(card) {
+  if (card.dataset.gameUrl) return card.dataset.gameUrl;
+  const playButton = card.querySelector("button:not(.favorite-btn)");
+  const handler = playButton?.getAttribute("onclick") || "";
+  const routeMatch = handler.match(/,\s*(['"])(.*?)\1\s*\)/);
+  return routeMatch ? routeMatch[2] : "";
+}
+
+function appendNoahsGameCards() {
+  const gameGrid = document.querySelector(".games");
+  const catalog = Array.isArray(window.noahsGameCatalog) ? window.noahsGameCatalog : [];
+  if (!gameGrid || !catalog.length) return;
+
+  const existingCards = Array.from(gameGrid.querySelectorAll(".game-card"));
+  const titleKeys = new Set(existingCards.map(card => normalizeGameTitle(card.querySelector("h2")?.textContent)));
+  const routeKeys = new Set(existingCards.map(card => normalizeGameRoute(getGameCardRoute(card))).filter(Boolean));
+  const importedTitleKeys = new Set();
+  const importedRouteKeys = new Set();
+  const stats = { sourceRecords: catalog.length, imported: 0, duplicate: 0, unavailable: 0, missingThumbnails: 0 };
+
+  catalog.forEach(game => {
+    const title = String(game.title || "").trim();
+    const route = String(game.url || "").trim();
+    const titleKey = normalizeGameTitle(title);
+    const routeKey = normalizeGameRoute(route);
+    if (!title || !route) return;
+    if (titleKeys.has(titleKey) || routeKeys.has(routeKey) || importedTitleKeys.has(titleKey) || importedRouteKeys.has(routeKey)) {
+      stats.duplicate += 1;
+      return;
+    }
+
+    const card = document.createElement("div");
+    card.className = "game-card imported-game-card";
+    card.dataset.gameUrl = route;
+    card.dataset.originalGameRoute = String(game.originalRoute || "");
+    card.dataset.sourceGame = "noahs.academy";
+
+    if (game.image) {
+      const image = document.createElement("img");
+      image.src = game.image;
+      image.alt = title;
+      image.loading = "lazy";
+      image.className = "game-image";
+      image.addEventListener("error", function() {
+        const placeholder = document.createElement("div");
+        placeholder.className = "game-image game-image-placeholder";
+        placeholder.textContent = "Thumbnail unavailable";
+        image.replaceWith(placeholder);
+      }, { once: true });
+      card.appendChild(image);
+    } else {
+      const placeholder = document.createElement("div");
+      placeholder.className = "game-image game-image-placeholder";
+      placeholder.textContent = "No thumbnail supplied";
+      card.appendChild(placeholder);
+      stats.missingThumbnails += 1;
+    }
+
+    const heading = document.createElement("h2");
+    heading.textContent = title;
+    card.appendChild(heading);
+
+    const playButton = document.createElement("button");
+    playButton.type = "button";
+    if (game.playable) {
+      playButton.textContent = "PLAY";
+      playButton.addEventListener("click", function() {
+        playGame(title, route);
+      });
+    } else {
+      playButton.textContent = "UNAVAILABLE";
+      playButton.disabled = true;
+      playButton.title = String(game.unavailableReason || "This source game cannot be launched here.");
+      const status = document.createElement("p");
+      status.className = "game-status";
+      status.textContent = playButton.title;
+      card.appendChild(status);
+      stats.unavailable += 1;
+    }
+    card.appendChild(playButton);
+
+    const favoriteButton = document.createElement("button");
+    favoriteButton.type = "button";
+    favoriteButton.className = "favorite-btn";
+    favoriteButton.textContent = "♡";
+    favoriteButton.setAttribute("aria-label", "Toggle favorite for " + title);
+    card.appendChild(favoriteButton);
+
+    gameGrid.appendChild(card);
+    setupFavoriteButton(favoriteButton);
+    titleKeys.add(titleKey);
+    routeKeys.add(routeKey);
+    importedTitleKeys.add(titleKey);
+    importedRouteKeys.add(routeKey);
+    stats.imported += 1;
+  });
+
+  const count = document.getElementById("game-count");
+  if (count) count.textContent = "Games: " + document.querySelectorAll(".game-card").length;
+  window.noahsGameImportSummary = stats;
+  updateGames();
+}
+
+appendNoahsGameCards();
+
 // Recently Played
 function playGame(name, url) {
     let recentGames = JSON.parse(localStorage.getItem("recentGames")) || [];
@@ -2344,7 +2742,7 @@ function stopNukeSound() {
 
 
 // ===============================
-// FLOATING PARTICLES
+// GLOWING ORANGE EMBERS
 // ===============================
 
 const particleCanvas = document.getElementById("particles");
@@ -2360,35 +2758,57 @@ function resizeCanvas() {
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-for (let i = 0; i < 70; i++) {
+for (let i = 0; i < 90; i++) {
   particles.push({
     x: Math.random() * particleCanvas.width,
     y: Math.random() * particleCanvas.height,
-    size: Math.random() * 3 + 1,
-    speedX: (Math.random() - 0.5) * 0.7,
-    speedY: (Math.random() - 0.5) * 0.7
+    size: Math.random() * 2.5 + 0.8,
+    speedY: Math.random() * 0.8 + 0.2,
+    speedX: (Math.random() - 0.5) * 0.5,
+    opacity: Math.random() * 0.6 + 0.3,
+    flicker: Math.random() * 0.03 + 0.01
   });
 }
 
 function animateParticles() {
   particleCtx.clearRect(
-    0,
-    0,
+    0, 0,
     particleCanvas.width,
     particleCanvas.height
   );
+    const particleColor = window.currentThemeParticleColor || "rgba(255, 122, 26, 0.6)";
+  const rgb = particleColor.match(/\d+/g) || [255, 122, 26, 0.6];
 
   particles.forEach(p => {
+    p.y -= p.speedY;
     p.x += p.speedX;
-    p.y += p.speedY;
 
-    if (p.x < 0 || p.x > particleCanvas.width) p.speedX *= -1;
-    if (p.y < 0 || p.y > particleCanvas.height) p.speedY *= -1;
+    p.opacity += (Math.random() - 0.5) * p.flicker;
+    p.opacity = Math.max(0.15, Math.min(0.8, p.opacity));
+
+    if (p.y < -10) {
+        p.y = particleCanvas.height + 10;
+        p.x = Math.random() * particleCanvas.width;
+    }
+
+    if (p.x < -10) p.x = particleCanvas.width + 10;
+    if (p.x > particleCanvas.width + 10) p.x = -10;
+
+    const glowSize = p.size * 9;
+
+    const gradient = particleCtx.createRadialGradient(
+        p.x, p.y, 0,
+        p.x, p.y, glowSize
+    );
+
+    gradient.addColorStop(0, `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${p.opacity})`);
+gradient.addColorStop(0.15, `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${p.opacity * 0.55})`);
+gradient.addColorStop(0.4, `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${p.opacity * 0.16})`);
+gradient.addColorStop(1, `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0)`);
 
     particleCtx.beginPath();
-    particleCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    particleCtx.fillStyle = window.currentThemeParticleColor ||
-    "rgba(255, 122, 26, 0.6)";
+    particleCtx.arc(p.x, p.y, glowSize, 0, Math.PI * 2);
+    particleCtx.fillStyle = gradient;
     particleCtx.fill();
   });
 
@@ -2864,6 +3284,74 @@ window.addEventListener("DOMContentLoaded", function() {
     window.changeTheme(savedTheme);
 });
 </script>
+<script>
+const homeTaglines = [
+    "whats cooking good lookin?",
+    "i think therefore i am",
+    "i miss the old kayne",
+    "billions must learn",
+    "PLEASEEEE DONT WHIP ME ANYMORE",
+    "SHE GON CALL ME BABY BOO",
+    "is summer over already?",
+    "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+    "to confuse your enemy, you must confuse yourself first",
+    "tell your teacher i said wsg",
+    "join the discord or i will touch you...",
+    "W speed",
+    "I AM the lion",
+    "too much radio not enough head",
+    "yo speed my reboot card expires in....",
+    "hoes mad",
+    "if yo leg got cut off, would it hurt?",
+    "life is hard but im harder",
+    "chat, is this real",
+    "So from a distance you think you at it, you think you're looking at a dog and you look close.... why you looking at me like that?",
+    "My lawyer has advised me not to finish this senten—",
+    "i think oliver tree made that song",
+    "ooouuu shiiii",
+    "jarvis, more achool",
+    "talkin about me?"
+];
 
+let taglineIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeTagline() {
+    const tagline = document.getElementById("home-tagline");
+
+    if (!tagline) return;
+
+    const currentText = homeTaglines[taglineIndex];
+
+    if (!deleting) {
+        tagline.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === currentText.length) {
+            deleting = true;
+            setTimeout(typeTagline, 1800);
+            return;
+        }
+
+        setTimeout(typeTagline, 65);
+
+    } else {
+        tagline.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+            deleting = false;
+            taglineIndex = (taglineIndex + 1) % homeTaglines.length;
+            setTimeout(typeTagline, 400);
+            return;
+        }
+
+        setTimeout(typeTagline, 35);
+    }
+}
+
+typeTagline();
+</script>
 </body>
 </html>
